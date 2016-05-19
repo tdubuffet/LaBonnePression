@@ -1,3 +1,109 @@
+
+$header-height: 55px;
+$header-line-height: 52px;
+
+
 body{
-  background: pink;
+  font-weight: 400;
+  background: $brand-light;
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1020px;
+  }
+}
+
+.header{
+  background: rgba($brand-primary, 0.9);
+  width: 100%;
+  min-height: $header-height;
+
+  box-shadow:  0px 0px 5px rgba($dark, 0.9);
+  border-bottom: 1px solid $brand-warning;
+
+  .logo{
+    img{
+      height: 44px;
+      margin-top: -1px;
+    }
+    line-height: $header-line-height;
+    color: $brand-light;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 2px $brand-warning;
+  }
+
+  .menu-account{
+    text-align: right;
+    line-height: $header-line-height;
+    .btn {
+      color: $brand-light;
+      text-transform: uppercase;
+      font-size: 0.9em;
+    }
+  }
+}
+
+.subheader{
+  min-height: 580px;
+  background: url(../bundles/front/images/heroBeer.jpg) no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+
+  .slogan{
+    text-align: center;
+    font-size: 2.6em;
+    line-height: 1em;
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    width: 800px;
+    margin-top: -2em;
+    margin-left: -400px;
+    text-align: center;
+    color: $brand-light;
+    text-shadow: 1px 1px 5px rgba($dark, 0.9);
+    letter-spacing: 3px;
+  }
+
+  .search{
+    height: 120px;
+    background: rgba($dark, 0.7);
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+
+    form{
+      margin-top: 18px;
+      label{
+        color: $brand-light;
+        font-size: 1.1em;
+        letter-spacing: 1px;
+      }
+      .form-control{
+        max-height: 40px;
+        border-radius: 0px;
+      }
+      .btn-bg{
+        height: 40px;
+        margin-top: 32px;
+      }
+      .btn-search{
+        text-transform: uppercase;
+      }
+    }
+  }
+
+}
+
+.location{
+  margin-top: 50px;
+  margin-bottom: 20px;
+  color: $brand-warning;
+}
+
+.card-location{
+  img{
+    max-width: 100%;
+  }
 }

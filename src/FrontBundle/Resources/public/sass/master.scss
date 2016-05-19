@@ -1,3 +1,16 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,600italic,700,300italic,300);
 @import
+
+  // Font
+  'fonts/dense/denseFont',
+
+  //BOOTSTRAP
+  'variables',
+  '../../../components/bootstrap/scss/bootstrap',
+
+  // FA ICON
+  '../../../components/components-font-awesome/scss/font-awesome',
+
+  //TEMPLATE
   'layout'
 ;
