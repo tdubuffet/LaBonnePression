@@ -45,7 +45,7 @@ class Institution
     /**
      * @var string
      *
-     * @ORM\Column(name="formatted_phone_number", type="string", length=255, unique=true, nullable=true)
+     * @ORM\Column(name="formatted_phone_number", type="string", length=255, unique=false, nullable=true)
      */
     private $formattedPhoneNumber;
 
@@ -70,6 +70,22 @@ class Institution
      * @ORM\Column(name="longitude", type="float", nullable=true)
      */
     private $longitude;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="text", nullable=true)
+     */
+    private $city;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="postal_code", type="text", nullable=true)
+     */
+    private $postalCode;
 
 
     /**
@@ -421,5 +437,39 @@ class Institution
     {
         $this->googleAddressComponents = $googleAddressComponents;
     }
+
+    /**
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPostalCode()
+    {
+        return $this->postalCode;
+    }
+
+    /**
+     * @param string $postalCode
+     */
+    public function setPostalCode($postalCode)
+    {
+        $this->postalCode = $postalCode;
+    }
+
+
 }
 

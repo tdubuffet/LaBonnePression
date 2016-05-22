@@ -12,6 +12,14 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('FrontBundle:Default:index.html.twig');
+
+        $parisDisctrict = $this->getDoctrine()
+            ->getRepository('InstitutionBundle:Institution')
+            ->countParisDisctrict();
+
+
+        return $this->render('FrontBundle:Default:index.html.twig', array(
+            'paris' => $parisDisctrict
+        ));
     }
 }

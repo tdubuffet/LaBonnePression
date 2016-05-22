@@ -38,6 +38,36 @@ class CrawlerBarGmapsCommand extends ContainerAwareCommand
             ->getRepository('InstitutionBundle:Institution');
 
 
+        $postalCode = $this
+            ->getContainer()
+            ->get('doctrine')
+            ->getRepository('InstitutionBundle:ReferentialCity');
+
+        foreach ($postalCode->findAll() as $code) {
+
+
+            $output->writeln('/**************************************** \/');
+            $output->writeln('/******* ' . $code->getPostalCode() . ' ' . $code->getCity() .' ******* \/');
+            $output->writeln('/**************************************** \/');
+
+            $geoloc = $this->locationByName($code->getPostalCode() . ' ' . $code->getCity() .' Paris ');
+
+            if (isset($geoloc['results'][0])) {
+
+                $this->geoMaps(
+                    $geoloc['results'][0]['geometry']['location']['lat'],
+                    $geoloc['results'][0]['geometry']['location']['lng'],
+                    $output,
+                    $institutionRepositoy
+                );
+            }
+
+        }
+
+        $output->writeln('Done !');
+
+        return ;
+
         $referentialsParis = (new Paris())->getDistrict();
 
         foreach ($referentialsParis as $j => $district) {
@@ -53,7 +83,7 @@ class CrawlerBarGmapsCommand extends ContainerAwareCommand
                 $output->writeln('---------- ' . $quarter .'----------------');
                 $output->writeln('------------------------------------------');
 
-                $geoloc = $this->locationByName($quarter);
+                $geoloc = $this->locationByName($quarter . ' Paris ');
 
                 if (isset($geoloc['results'][0])) {
 
@@ -70,6 +100,8 @@ class CrawlerBarGmapsCommand extends ContainerAwareCommand
 
 
 
+
+
         $output->writeln('Done !');
 
 
@@ -78,7 +110,7 @@ class CrawlerBarGmapsCommand extends ContainerAwareCommand
     protected function geoMaps($lat, $lng, $output, $institutionRepositoy)
     {
         $this->google->location = array($lat, $lng);
-        $this->google->radius   = 1000;
+        $this->google->radius   = 4000;
         $this->google->types    = 'bar';
         $this->google->language = 'fr';
 
@@ -107,7 +139,7 @@ class CrawlerBarGmapsCommand extends ContainerAwareCommand
 
     protected function locationByName($districtName)
     {
-        $url = "http://maps.googleapis.com/maps/api/geocode/json?address=" . urlencode($districtName . ' Paris France') . "&sensor=false";
+        $url = "http://maps.googleapis.com/maps/api/geocode/json?address=" . urlencode($districtName . ' France') . "&sensor=false";
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -155,7 +187,38 @@ class CrawlerBarGmapsCommand extends ContainerAwareCommand
                         $institution->setGoogleTypes($details['types']);
                         $institution->setGoogleAddressComponents($details['address_components']);
 
+                        $postalCode = null;
+                        $city = null;
 
+
+                        foreach ($institution->getGoogleAddressComponents() as $comp) {
+
+                            if (isset($comp['types'][0])) {
+                                switch ($comp['types'][0]) {
+
+                                    case 'postal_code':
+
+                                        $postalCode = $comp['long_name'];
+
+                                        break;
+
+
+                                    case 'locality':
+
+                                        $city = $comp['long_name'];
+
+                                        break;
+
+                                }
+
+                                if ($postalCode && $city) {
+
+                                    $institution->setCity($city);
+                                    $institution->setPostalCode($postalCode);
+                                }
+                            }
+
+                        }
 
                         try {
                             $this->getContainer()->get('doctrine')->resetManager();
@@ -166,6 +229,8 @@ class CrawlerBarGmapsCommand extends ContainerAwareCommand
                         catch (UniqueConstraintViolationException $e){
                             $output->writeln('[' . $result['place_id'] . ']: Error institution  - Duplicate values');
                         }
+
+                        sleep(1);
 
                     }
 

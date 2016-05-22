@@ -10,4 +10,27 @@ namespace InstitutionBundle\Repository;
  */
 class InstitutionRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function countByPostalCode($postalCode)
+    {
+
+        $qb = $this->createQueryBuilder('a');
+        $qb->select('COUNT(a) as nbr, AVG(a.googleRating) as rate, SUM(a.googleUserRatingsTotal) as nbrRate');
+        $qb->where('a.postalCode = :postalCode');
+        $qb->setParameter('postalCode', $postalCode);
+
+        return $qb->getQuery()->getSingleResult();
+
+    }
+
+    public function countParisDisctrict()
+    {
+        $postalCode = [];
+        for($i = 1; $i <= 20; $i++) {
+            $postalCode[75000 + $i] = $this->countByPostalCode(75000 + $i);
+        }
+
+        return $postalCode;
+    }
+
 }

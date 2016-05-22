@@ -3,11 +3,6 @@ institution:
     type:     annotation
     prefix:   /
 
-crawler:
-    resource: "@CrawlerBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 front:
     resource: "@FrontBundle/Controller/"
     type:     annotation
