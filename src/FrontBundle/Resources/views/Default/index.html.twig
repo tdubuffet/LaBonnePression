@@ -73,29 +73,84 @@
 
         <div class="container">
 
-            <h2 class="location">Les bars par arrondissement à Paris</h2>
+            <h2 class="location">Les bars à Paris</h2>
 
             <div class="row">
-                {% for district in paris %}
+                {% for key, district in paris %}
                 <div class="col-md-3">
-                    <div class="card card-location">
-                        <img class="card-img-top" src="http://d24k05azbhuq7p.cloudfront.net/_novaimg/galleria/231221.jpg" alt="Card image cap">
-                        <div class="card-block">
-                            <h4 class="card-title">Card title</h4>
+                    <a class="card card-location" href="{{ path('search_city', { cityName: 'paris' | lower |slugify , postalCode: key }) }}">
+                        <div class="img-card">
 
-                            <p><b>{{ district.nbr }}</b> bars</p>
-                            <p>
-                                <b>{{ district.rate }}</b> sur <b>5</b> d'avis ({{ district.nbrRate }} avis)
-                            </p>
+                            <img class="card-img-top" src="http://d24k05azbhuq7p.cloudfront.net/_novaimg/galleria/231221.jpg" alt="Card image cap">
+
+                            <div class="card-img-overlay"></div>
+                            <div class="nbr-bar">
+                                <b>{{ district.nbr }}</b> bars
+                                <div class="rating" style="width: {{ district.rate*12 }}px">
+                                    <div class="subrating">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="nbr-rating">
+                                    {{ district.nbrRate|number_format }} avis
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-block">
-                            <a href="#" class="btn btn-primary btn-block">Voir les bars</a>
-                        </div>
-                    </div>
+                        <h4 class="card-title">
+                            {% if loop.first %}
+                                1<sup>er</sup> arrondissement
+                            {% else %}
+                                {{ loop.index }}<sup>ème</sup> arondissement
+                            {% endif %}
+                        </h4>
+                    </a>
                 </div>
                 {% endfor %}
 
             </div>
+
+
+
+            <h2 class="location">Les bars en Ile-de-France</h2>
+
+            <div class="row cities">
+                {% for key, departement in popularCity %}
+                <div class="col-md-4">
+
+                    <div class="card">
+                        <div class="card-block city-title">
+                            <h4 class="card-title">{{ departements[key].name }}</h4>
+                            <div class="card-text nbr-bar">
+                                <b>{{ departements[key].data.nbr }}</b> bars
+                                <div class="rating" style="width: {{ departements[key].data.rate*12 }}px">
+                                    <div class="subrating">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="nbr-rating">
+                                    {{ departements[key].data.nbrRate|number_format }} avis
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for city in departement %}
+                                <li class="list-group-item"><a href="{{ path('search_city', { cityName: city.city | lower |slugify , postalCode: city.postalCode }) }}">{{ city.city }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+
 
         </div>
 

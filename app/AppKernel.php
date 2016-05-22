@@ -24,6 +24,13 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+
+
+            new FOS\ElasticaBundle\FOSElasticaBundle(),
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+            new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
+
+
             new FrontBundle\FrontBundle(),
             new CrawlerBundle\CrawlerBundle(),
             new InstitutionBundle\InstitutionBundle(),

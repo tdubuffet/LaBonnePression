@@ -2,12 +2,23 @@ var gulp = require('gulp');
 
 var sass = sass = require('gulp-sass');
 
+function swallowError (error) {
+
+    // If you want details of the error in the console
+    console.log(error.toString())
+
+    this.emit('end')
+}
+
 gulp.task('sass', function () {
 
     gulp.src('./web/bundles/front/sass/master.scss')
-        .pipe(sass({sourceComments: 'map', errLogToConsole: true}))
+        .pipe(sass({sourceComments: 'map'}))
+        .on('error', swallowError)
         .pipe(gulp.dest('./web/css/'));
 });
+
+
 
 var livereload = require('gulp-livereload');
 

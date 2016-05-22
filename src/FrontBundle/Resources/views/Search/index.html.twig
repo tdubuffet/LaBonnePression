@@ -1,0 +1,80 @@
+{% extends 'FrontBundle:Layout:skeleton.html.twig' %}
+
+{% block title %}Les bars à {{ app.request.get('cityName') }}{% endblock %}
+
+{% block javascript %}
+    <script src="http://maps.google.com/maps/api/js"></script>
+    <script type="text/javascript" src="{{ asset('/components/gmaps/gmaps.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/front/js/search.js') }}"></script>
+
+    {% if results.getCurrentPageResults() %}
+    <script>
+
+
+        var lat = {{ results.getCurrentPageResults()[0].latitude }},
+            lng = {{ results.getCurrentPageResults()[0].longitude }};
+
+        $(document).ready(function() {
+            Search.init(lat, lng);
+
+            {% for institution in results %}
+                Search.addMarker(
+                    '{{ institution.latitude }}',
+                    '{{ institution.longitude }}',
+                    '{{ institution.name }}',
+                    '{{ institution.id }}'
+                );
+            {% endfor %}
+
+            Search.setBounds();
+        });
+    </script>
+    {% endif %}
+
+{% endblock %}
+
+
+{% block bodyClass %}search-page{% endblock %}
+
+{% block wrapper %}
+    <div id="gmaps">
+
+    </div>
+{% endblock %}
+
+{% block container %}
+
+
+    <h1>
+        Les bars à {{ app.request.get('cityName') }} - ({{ app.request.get('postalCode') }})
+    </h1>
+
+
+    <div class="row row-item-card">
+        <div class="col-md-12 search-item-card">
+            <div class="row">
+            {% for institution in results %}
+                <div class="col-md-4" id="bar-{{ institution.id }}">
+                    <div class="card">
+                        <img class="card-img-top" src="https://mdemontalivet.files.wordpress.com/2008/05/barhemingwayritz.jpg" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">{{ institution.name }}</h4>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">J'ai soif</a>
+                        </div>
+                    </div>
+                </div>
+
+                {% if (loop.index%3) == 0 %}
+                    </div><div class="row">
+                {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="pagerfanta">
+        {{ pagerfanta(results, 'twitter_bootstrap3') }}
+    </div>
+
+{% endblock %}
