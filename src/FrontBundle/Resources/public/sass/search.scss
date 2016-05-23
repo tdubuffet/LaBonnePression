@@ -1,5 +1,7 @@
 .search-page{
 
+  margin-top: 55px;
+
   h1{
     margin-top: 50px;
     margin-bottom: 20px;
@@ -30,9 +32,12 @@
     }
   }
 
-  #gmaps{
+  #gmaps-container{
     width: 100%;
-    min-height: 400px;
+    position: fixed;
   }
 
+  #gmaps{
+    width: 100%;
+  }
 }

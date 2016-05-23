@@ -2,16 +2,34 @@
 
 namespace FrontBundle\Controller;
 
+use InstitutionBundle\Form\SearchLocationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
     /**
      * @Route("/")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+
+        $locationId = $request->get('location', null);
+
+        if ($locationId) {
+
+            $location = $this->getDoctrine()
+                ->getRepository('InstitutionBundle:ReferentialLocation')
+                ->find($locationId);
+
+            return $this->redirectToRoute('search_city_geolocalisation', array(
+                'cityId' => $location->getId(),
+                'cityName' => $location->getName(),
+                'lat' => $location->getLatitude(),
+                'lng' => $location->getLongitude(),
+            ));
+        }
 
         $repoInstitution = $this->getDoctrine()
             ->getRepository('InstitutionBundle:Institution');

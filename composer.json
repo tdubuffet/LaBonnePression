@@ -25,7 +25,8 @@
         "friendsofsymfony/elastica-bundle": "dev-master",
         "ruflin/elastica": "3.1.1 as 2.99.0",
         "white-october/pagerfanta-bundle": "^1.0",
-        "cocur/slugify": "^2.1"
+        "cocur/slugify": "^2.1",
+        "symfony/assetic-bundle": "^2.8"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

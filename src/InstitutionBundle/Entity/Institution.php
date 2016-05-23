@@ -470,6 +470,9 @@ class Institution
         $this->postalCode = $postalCode;
     }
 
+    public function getLocation() {
+        return $this->latitude . ',' . $this->longitude;
+    }
 
 }
 

@@ -37,44 +37,47 @@
 {% block bodyClass %}search-page{% endblock %}
 
 {% block wrapper %}
-    <div id="gmaps">
 
-    </div>
-{% endblock %}
+    <div class="row-fluid">
+        <div class="col-md-6 col-gmaps">
+            <div id="gmaps-container">
+                <div id="gmaps"></div>
+            </div>
 
-{% block container %}
+        </div>
+        <div class="col-md-6">
+            <h1>
+                Les bars à {{ app.request.get('cityName') }} - ({{ app.request.get('postalCode') }})
+            </h1>
 
 
-    <h1>
-        Les bars à {{ app.request.get('cityName') }} - ({{ app.request.get('postalCode') }})
-    </h1>
-
-
-    <div class="row row-item-card">
-        <div class="col-md-12 search-item-card">
-            <div class="row">
-            {% for institution in results %}
-                <div class="col-md-4" id="bar-{{ institution.id }}">
-                    <div class="card">
-                        <img class="card-img-top" src="https://mdemontalivet.files.wordpress.com/2008/05/barhemingwayritz.jpg" alt="Card image cap">
-                        <div class="card-block">
-                            <h4 class="card-title">{{ institution.name }}</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">J'ai soif</a>
+            <div class="row row-item-card">
+                <div class="col-md-12 search-item-card">
+                    <div class="row">
+                        {% for institution in results %}
+                        <div class="col-md-4" id="bar-{{ institution.id }}">
+                            <div class="card">
+                                <img class="card-img-top" src="https://mdemontalivet.files.wordpress.com/2008/05/barhemingwayritz.jpg" alt="Card image cap">
+                                <div class="card-block">
+                                    <h4 class="card-title">{{ institution.name }}</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <a href="#" class="btn btn-primary">J'ai soif</a>
+                                </div>
+                            </div>
                         </div>
+
+                        {% if (loop.index%3) == 0 %}
+                    </div><div class="row">
+                        {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
+            </div>
 
-                {% if (loop.index%3) == 0 %}
-                    </div><div class="row">
-                {% endif %}
-            {% endfor %}
+            <div class="pagerfanta">
+                {{ pagerfanta(results, 'twitter_bootstrap3') }}
             </div>
         </div>
-    </div>
-
-    <div class="pagerfanta">
-        {{ pagerfanta(results, 'twitter_bootstrap3') }}
     </div>
 
 {% endblock %}
