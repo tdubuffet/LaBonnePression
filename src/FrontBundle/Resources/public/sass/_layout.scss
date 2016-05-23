@@ -8,7 +8,7 @@ body{
 }
 
 .header{
-  background: rgba($brand-primary, 0.9);
+  background: $brand-primary;
   width: 100%;
   min-height: $header-height;
   position:fixed;
@@ -17,8 +17,7 @@ body{
   z-index: 50;
 
 
-  box-shadow:  0px 0px 5px rgba($dark, 0.9);
-  border-bottom: 1px solid $brand-warning;
+  box-shadow:  0px 0px 5px rgba($dark, 0.6);
 
   .logo{
     img{

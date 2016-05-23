@@ -14,15 +14,24 @@ class SearchLocationController extends Controller
      */
     public function getLocationsAction(Request $request)
     {
-        $query      = $request->query->get('q', null);
+        $q      = $request->query->get('q', null);
         $results    = [];
 
-        if ($query) {
+        if ($q) {
 
-            $data = $this->getDoctrine()
-                ->getRepository('InstitutionBundle:ReferentialLocation')
-                ->findByLikeName($query);
 
+
+            $finder = $this->get('fos_elastica.finder.app.location');
+            $query = new \Elastica\Query();
+
+            $queryString = new \Elastica\Query\QueryString($q . '*');
+
+            $queryString->setFields(array('name', 'postalCode'));
+
+            $query->setQuery($queryString);
+
+
+            $data = $finder->find($query, 10);
 
             foreach($data as $d) {
                 $name = $d->getName();

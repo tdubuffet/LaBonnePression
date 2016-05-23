@@ -125,3 +125,24 @@ fos_elastica:
                         listener:
                             immediate: ~
                         finder: ~
+                location:
+                    mappings:
+                        id: ~
+                        name: { analyzer: 'custom_french_analyzer'}
+                        slug: ~
+                        latitude: ~
+                        longitude: ~
+                        department: ~
+                        departmentName: ~
+                        region: ~
+                        regionName: ~
+                        postalCode: ~
+                    persistence:
+                        #model_to_elastica_transformer:
+                        #    service: institution.populate
+                        driver: orm
+                        model: InstitutionBundle\Entity\ReferentialLocation
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~

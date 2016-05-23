@@ -474,5 +474,10 @@ class Institution
         return $this->latitude . ',' . $this->longitude;
     }
 
+    public function getPictures()
+    {
+        
+    }
+
 }
 

@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="homepage")
      */
     public function indexAction(Request $request)
     {
@@ -24,10 +24,7 @@ class DefaultController extends Controller
                 ->find($locationId);
 
             return $this->redirectToRoute('search_city_geolocalisation', array(
-                'cityId' => $location->getId(),
-                'cityName' => $location->getName(),
-                'lat' => $location->getLatitude(),
-                'lng' => $location->getLongitude(),
+                'citySlug' => $location->getSlug()
             ));
         }
 

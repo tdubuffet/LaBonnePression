@@ -47,15 +47,54 @@
         </div>
         <div class="col-md-6">
             <h1>
-                Les bars à {{ app.request.get('cityName') }} - ({{ app.request.get('postalCode') }})
+                {% if level == 'city' %}
+                    Les bars à {{ location.name }} - ({{ location.postalCode }})
+                {% endif %}
             </h1>
+
+            <div class="row-filter">
+                <ol class="breadcrumb" style="margin-bottom: 5px;">
+
+                    <li><a href="{{ path('homepage') }}">Le comptoir</a></li>
+
+                    {% if level == 'city' %}
+                        <li><a href="#">{{ location.getRegionName() }}</a></li>
+                        <li><a href="#">{{ location.getDepartmentName() }}</a></li>
+                        <li class="active">{{ location.name }}</li>
+                    {% endif %}
+                </ol>
+            </div>
+
+
+
+            <div class="row row-filter">
+                <div class="col-sm-8">
+                    <p class="text-lg-left">
+                        {% if level == 'city' %}
+                            <b>{{ results.getNbResults() }}</b> bar(s) à {{ location.name }} - ({{ location.postalCode }})
+                        {% endif %}
+                    </p>
+
+                </div>
+                <div class="col-sm-4">
+                    <fieldset class="form-group">
+                        <select class="form-control" id="exampleSelect1">
+                            <option selected>Les mieux notés</option>
+                            <option>Les plus récents</option>
+                            <option>Avec le plus d'avis</option>
+                        </select>
+                    </fieldset>
+                </div>
+            </div>
+
+
 
 
             <div class="row row-item-card">
                 <div class="col-md-12 search-item-card">
                     <div class="row">
                         {% for institution in results %}
-                        <div class="col-md-4" id="bar-{{ institution.id }}">
+                        <div class="col-md-6 col-lg-6" id="bar-{{ institution.id }}">
                             <div class="card">
                                 <img class="card-img-top" src="https://mdemontalivet.files.wordpress.com/2008/05/barhemingwayritz.jpg" alt="Card image cap">
                                 <div class="card-block">
@@ -66,7 +105,7 @@
                             </div>
                         </div>
 
-                        {% if (loop.index%3) == 0 %}
+                        {% if (loop.index%2) == 0 %}
                     </div><div class="row">
                         {% endif %}
                         {% endfor %}

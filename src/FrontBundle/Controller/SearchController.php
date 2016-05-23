@@ -27,7 +27,7 @@ class SearchController extends Controller
 
         $location = $this->getDoctrine()
             ->getRepository('InstitutionBundle:ReferentialLocation')
-            ->find($request->get('cityId'));
+            ->findOneBySlug($request->get('citySlug'));
 
         if($cityname && !$postalCode && !$location) {
             $fieldQuery = new \Elastica\Query\Match();
@@ -52,8 +52,8 @@ class SearchController extends Controller
             $boolQuery->addShould($fieldQuery);
 
 
-            $filter = new GeoDistance('location', array('lat' => $location->getLatitude(), 'lon' => $location->getLongitude()), '5km');
-            $query->setPostFilter($filter);
+            //$filter = new GeoDistance('location', array('lat' => $location->getLatitude(), 'lon' => $location->getLongitude()), '5km');
+            //$query->setPostFilter($filter);
         }
 
 
@@ -65,8 +65,10 @@ class SearchController extends Controller
         $results->setMaxPerPage(27);
         $results->setCurrentPage($request->get('page', 1));
 
+
         return array(
-            'results' => $results
+            'results' => $results,
+            'location' => $location
         );
     }
 
@@ -79,10 +81,15 @@ class SearchController extends Controller
     }
 
     /**
-     * @Route("/recherche/ville/{cityId}-{cityName}+{lat}+{lng}", name="search_city_geolocalisation")
+     * @Route("/recherche/ville/{citySlug}", name="search_city_geolocalisation")
      */
     public function searchCityGeolocalisationAction(Request $request)
     {
-        return $this->render('FrontBundle:Search:index.html.twig', $this->searchAction($request));
+        return $this->render('FrontBundle:Search:index.html.twig', array_merge(
+            $this->searchAction($request),
+            [
+                'level' => 'city'
+            ]
+        ));
     }
 }
