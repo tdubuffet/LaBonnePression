@@ -62,7 +62,7 @@ class SearchController extends Controller
         $query->setSort(array('googleRating' => array('order' => 'desc')));
 
         $results = $finder->findPaginated($query);
-        $results->setMaxPerPage(27);
+        $results->setMaxPerPage(100);
         $results->setCurrentPage($request->get('page', 1));
 
 

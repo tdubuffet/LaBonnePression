@@ -33,6 +33,12 @@ class CrawlerLocationCommand extends ContainerAwareCommand
     {
 
 
+        for($i = 1; $i <= 20; $i++) {
+            $this->addLocation($output, 75000 + $i .' Paris', 75, 75000 + $i, false, 'district_paris');
+        }
+
+        die;
+
         $departements = [
             77 => [
                 'name' => 'Seine-et-Marne'
@@ -99,7 +105,7 @@ class CrawlerLocationCommand extends ContainerAwareCommand
 
         $exists = $institutionRepositoy->findOneByPostalCode($postalCode);
 
-        if (in_array($region, $this->areaAuthorized) && empty($exists)) {
+        if ( (in_array($region, $this->areaAuthorized) || $type == 'district_paris') && empty($exists)) {
             $values = $this->locationByName($name);
 
             if ($values['status'] == 'OK' && isset($values['results'][0])) {
@@ -128,6 +134,18 @@ class CrawlerLocationCommand extends ContainerAwareCommand
                     if ( in_array('administrative_area_level_2', $comp['types']) && in_array('political', $comp['types']) && $type == 'department') {
                         $referentialLocation->setName($comp['long_name']);
                         $referentialLocation->setSlug($this->slugify($comp['long_name']));
+                    }
+
+                    if ($type == 'district_paris') {
+
+                        if (($postalCode-75000) == 1) {
+                            $name = '1er arrondissement de Paris';
+                        } else {
+                            $name = ($postalCode-75000) . 'ème arrondissement de Paris';
+                        }
+
+                        $referentialLocation->setName($name);
+                        $referentialLocation->setSlug($this->slugify($name));
                     }
 
 

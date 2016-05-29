@@ -62,6 +62,9 @@
     </head>
     <body>
         <div class="subheader">
+            <div class="subVideo">
+                <video controls="" autoplay="" loop="" poster="https://vb.wavebreak.media/640x360/499069.jpg"> <source src="https://d1dejrkhx3zaun.cloudfront.net/videoblocks/medium/499069.mp4" type="video/mp4"> <object type="application/x-shockwave-flash" data="https://d1ow200m9i3wyh.cloudfront.net/extra/assets/videoblocks/extras/flowplayer-3.2.1.swf" height="320" width="600"> <param name="movie" value="https://d1ow200m9i3wyh.cloudfront.net/extra/assets/videoblocks/extras/flowplayer-3.2.1.swf"> <param name="allowFullScreen" value="true"> <param name="wmode" value="transparent"> <param name="flashVars" value="config={'playlist':['https%3A%2F%2Fvb.wavebreak.media%2F640x360%2F499069.jpg',{'url':'https%3A%2F%2Fd1dejrkhx3zaun.cloudfront.net%2Fvideoblocks%2Fmedium%2F499069.mp4','autoPlay':true}]}"> <img src="https://vb.wavebreak.media/640x360/499069.jpg" width="100%"> </object> </video>
+            </div>
             <div class="header">
 
                 <div class="container">
@@ -77,6 +80,8 @@
                 </div>
 
             </div>
+
+
 
             <div class="slogan">
                 RETROUVER LES MEILLEURS BARS<br />DE LA CAPITALE EN QUELQUES CLIQUES
@@ -140,7 +145,7 @@
             <div class="row">
                 {% for key, district in paris %}
                 <div class="col-md-3">
-                    <a class="card card-location" href="{{ path('search_city', { cityName: 'paris' | lower |slugify , postalCode: key }) }}">
+                    <a class="card card-location" href="{{ path('search_city_geolocalisation', { citySlug: parisDistrictLocations[key].slug }) }}">
                         <div class="img-card">
 
                             <img class="card-img-top" src="http://d24k05azbhuq7p.cloudfront.net/_novaimg/galleria/231221.jpg" alt="Card image cap">

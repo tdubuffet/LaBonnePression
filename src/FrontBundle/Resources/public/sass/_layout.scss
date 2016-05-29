@@ -43,10 +43,18 @@ body{
 }
 
 .subheader{
-  min-height: 580px;
+  min-height: 550px;
   background: url(../bundles/front/images/heroBeer.jpg) no-repeat center center fixed;
   background-size: cover;
   position: relative;
+
+  .subVideo{
+    max-height: 550px;
+    overflow: hidden;
+    video{
+      width: 100%;
+    }
+  }
 
   .slogan{
     text-align: center;

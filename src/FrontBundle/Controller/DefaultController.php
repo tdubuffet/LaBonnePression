@@ -15,7 +15,7 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
 
-        $locationId = $request->get('location', null);
+        $locationId = $request->get('location');
 
         if ($locationId) {
 
@@ -32,9 +32,19 @@ class DefaultController extends Controller
             ->getRepository('InstitutionBundle:Institution');
 
         $parisDisctrict = $repoInstitution->countParisDisctrict();
+
+        $parisDistrictLocation = $this->getDoctrine()
+            ->getRepository('InstitutionBundle:ReferentialLocation')
+            ->findByType('district_paris');
+
+        $parisDistrictLocations = [];
+        foreach ($parisDistrictLocation as $district) {
+            $parisDistrictLocations[$district->getPostalCode()] = $district;
+        }
+
         $popularCity    = $repoInstitution->getCitiesInIleDeFrance(8);
 
-        $departements = [
+        $departements   = [
             77 => [
                 'name' => 'Seine-et-Marne',
                 'data' => $repoInstitution->countByDepartement(77)
@@ -67,9 +77,10 @@ class DefaultController extends Controller
 
 
         return $this->render('FrontBundle:Default:index.html.twig', array(
-            'paris' => $parisDisctrict,
-            'popularCity' => $popularCity,
-            'departements' => $departements
+            'paris'                     => $parisDisctrict,
+            'popularCity'               => $popularCity,
+            'departements'              => $departements,
+            'parisDistrictLocations'    => $parisDistrictLocations
         ));
     }
 }
