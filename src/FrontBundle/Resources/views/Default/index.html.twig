@@ -1,209 +1,197 @@
-<!doctype html>
-<html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>Titre de la page</title>
+{% extends 'FrontBundle:Layout:skeleton.html.twig' %}
+
+{% block title %}Les bars à {{ app.request.get('cityName') }}{% endblock %}
+
+{% block javascript %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/i18n/fr.js"></script>
 
 
-        <link href="{{ asset('/css/master.css') }}" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.2/css/tether-theme-basic.min.css" rel="stylesheet">
+    <script>
 
-        <script type="text/javascript" src="{{ asset('/components/jquery/dist/jquery.min.js') }}"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.2/js/tether.min.js"></script>
-        <script type="text/javascript" src="{{ asset('/components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+        $(document).ready(function() {
 
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/i18n/fr.js"></script>
-
-
-        <script>
-
-            $(document).ready(function() {
-
-                $("#location").select2({
-                    language: "fr",
-                    placeholder: 'Où boire un verre ?',
-                    ajax: {
-                        url: "{{ path('search_city_locations') }}",
-                        dataType: 'json',
-                        quietMillis: 100,
-                        data: function (term) {
-                            console.log(term);
-                            return {
-                                q: term.term
-                            };
-                        },
-                        results: function (data) {
-                            var myResults = [];
-                            $.each(data.results, function (index, item) {
-                                myResults.push({
-                                    'id': item.id,
-                                    'text': item.name
-                                });
-                            });
-                            return {
-                                results: myResults
-                            };
-                        },
-                        processResults: function (data, params) {
-
-                            return {
-                                results: data.items
-                            };
-                        },
-                        cache: true
+            $("#location").select2({
+                language: "fr",
+                placeholder: 'Où boire un verre ?',
+                ajax: {
+                    url: "{{ path('search_city_locations') }}",
+                    dataType: 'json',
+                    quietMillis: 100,
+                    data: function (term) {
+                        console.log(term);
+                        return {
+                            q: term.term
+                        };
                     },
-                    minimumInputLength: 1
-                });
+                    results: function (data) {
+                        var myResults = [];
+                        $.each(data.results, function (index, item) {
+                            myResults.push({
+                                'id': item.id,
+                                'text': item.name
+                            });
+                        });
+                        return {
+                            results: myResults
+                        };
+                    },
+                    processResults: function (data, params) {
 
+                        return {
+                            results: data.items
+                        };
+                    },
+                    cache: true
+                },
+                minimumInputLength: 1
             });
-        </script>
-    </head>
-    <body>
-        <div class="subheader">
-            <div class="subVideo">
-                <video controls="" autoplay="" loop="" poster="https://vb.wavebreak.media/640x360/499069.jpg"> <source src="https://d1dejrkhx3zaun.cloudfront.net/videoblocks/medium/499069.mp4" type="video/mp4"> <object type="application/x-shockwave-flash" data="https://d1ow200m9i3wyh.cloudfront.net/extra/assets/videoblocks/extras/flowplayer-3.2.1.swf" height="320" width="600"> <param name="movie" value="https://d1ow200m9i3wyh.cloudfront.net/extra/assets/videoblocks/extras/flowplayer-3.2.1.swf"> <param name="allowFullScreen" value="true"> <param name="wmode" value="transparent"> <param name="flashVars" value="config={'playlist':['https%3A%2F%2Fvb.wavebreak.media%2F640x360%2F499069.jpg',{'url':'https%3A%2F%2Fd1dejrkhx3zaun.cloudfront.net%2Fvideoblocks%2Fmedium%2F499069.mp4','autoPlay':true}]}"> <img src="https://vb.wavebreak.media/640x360/499069.jpg" width="100%"> </object> </video>
-            </div>
-            <div class="header">
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 logo">
-                            <img src="{{ asset('bundles/front/images/logo-icon.png') }}" alt="La bonne pression" /> La bonne pression
-                        </div>
-                        <div class="col-md-8 menu-account">
-                            <button type="button" class="btn btn-link"><i class="fa fa-user" aria-hidden="true"></i> Créer un compte</button>
-                            <button type="button" class="btn btn-link"><i class="fa fa-user-plus" aria-hidden="true"></i> Se connecter</button>
-                        </div>
-                    </div>
-                </div>
+        });
+    </script>
 
-            </div>
+{% endblock %}
 
+{% block header %}
 
-
-            <div class="slogan">
-                RETROUVER LES MEILLEURS BARS<br />DE LA CAPITALE EN QUELQUES CLIQUES
-            </div>
-
-            <div class="search">
-                <div class="container">
-
-                    <form class="row" method="POST" action="">
-                        <div class="col-md-5">
-                            <fieldset class="form-group">
-                                <label for="location">Quel quartier ?</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
-                                    <select id="location" name="location" class="form-control" placeholder="Où boire une mousse ?"></select>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="col-md-4">
-                            <fieldset class="form-group">
-                                <label for="location">Avis</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-star" aria-hidden="true"></i></div>
-
-                                    <input type="text" class="form-control" id="location">
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="col-md-3">
-                            <button type="submit" class="btn-search btn btn-primary btn-block btn-bg"><i class="fa fa-search" aria-hidden="true"></i> Trouver !</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <div class="subheader">
+        <div class="subVideo">
+            <video controls="" autoplay="" loop="" poster="https://vb.wavebreak.media/640x360/499069.jpg"> <source src="https://d1dejrkhx3zaun.cloudfront.net/videoblocks/medium/499069.mp4" type="video/mp4"> <object type="application/x-shockwave-flash" data="https://d1ow200m9i3wyh.cloudfront.net/extra/assets/videoblocks/extras/flowplayer-3.2.1.swf" height="320" width="600"> <param name="movie" value="https://d1ow200m9i3wyh.cloudfront.net/extra/assets/videoblocks/extras/flowplayer-3.2.1.swf"> <param name="allowFullScreen" value="true"> <param name="wmode" value="transparent"> <param name="flashVars" value="config={'playlist':['https%3A%2F%2Fvb.wavebreak.media%2F640x360%2F499069.jpg',{'url':'https%3A%2F%2Fd1dejrkhx3zaun.cloudfront.net%2Fvideoblocks%2Fmedium%2F499069.mp4','autoPlay':true}]}"> <img src="https://vb.wavebreak.media/640x360/499069.jpg" width="100%"> </object> </video>
         </div>
+        <div class="header">
 
-        <div class="container">
-
-            <h2 class="location">Les bars à Paris</h2>
-
-            <div class="row">
-                {% for key, district in paris %}
-                <div class="col-md-3">
-                    <a class="card card-location" href="{{ path('search_city_geolocalisation', { citySlug: parisDistrictLocations[key].slug }) }}">
-                        <div class="img-card">
-
-                            <img class="card-img-top" src="http://d24k05azbhuq7p.cloudfront.net/_novaimg/galleria/231221.jpg" alt="Card image cap">
-
-                            <div class="card-img-overlay"></div>
-                            <div class="nbr-bar">
-                                <b>{{ district.nbr }}</b> bars
-                                <div class="rating" style="width: {{ district.rate*12 }}px">
-                                    <div class="subrating">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div class="nbr-rating">
-                                    {{ district.nbrRate|number_format }} avis
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="card-title">
-                            {% if loop.first %}
-                                1<sup>er</sup> arrondissement
-                            {% else %}
-                                {{ loop.index }}<sup>ème</sup> arondissement
-                            {% endif %}
-                        </h4>
-                    </a>
-                </div>
-                {% endfor %}
-
-            </div>
-
-
-
-            <h2 class="location">Les bars en Ile-de-France</h2>
-
-            <div class="row cities">
-                {% for key, departement in popularCity %}
-                <div class="col-md-4">
-
-                    <div class="card">
-                        <div class="card-block city-title">
-                            <h4 class="card-title">{{ departements[key].name }}</h4>
-                            <div class="card-text nbr-bar">
-                                <b>{{ departements[key].data.nbr }}</b> bars
-                                <div class="rating" style="width: {{ departements[key].data.rate*12 }}px">
-                                    <div class="subrating">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div class="nbr-rating">
-                                    {{ departements[key].data.nbrRate|number_format }} avis
-                                </div>
-                            </div>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            {% for city in departement %}
-                                <li class="list-group-item"><a href="{{ path('search_city', { cityName: city.city | lower |slugify , postalCode: city.postalCode }) }}">{{ city.city }}</a></li>
-                            {% endfor %}
-                        </ul>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 logo">
+                        <img src="{{ asset('bundles/front/images/logo-icon.png') }}" alt="La bonne pression" /> La bonne pression
+                    </div>
+                    <div class="col-md-8 menu-account">
+                        <button type="button" class="btn btn-link"><i class="fa fa-user" aria-hidden="true"></i> Créer un compte</button>
+                        <button type="button" class="btn btn-link"><i class="fa fa-user-plus" aria-hidden="true"></i> Se connecter</button>
                     </div>
                 </div>
-                {% endfor %}
             </div>
-
-
 
         </div>
 
 
-        {% if app.environment == 'dev' %}
-            <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
-        {% endif %}
-    </body>
-</html>
+
+        <div class="slogan">
+            RETROUVER LES MEILLEURS BARS<br />DE LA CAPITALE EN QUELQUES CLIQUES
+        </div>
+
+        <div class="search">
+            <div class="container">
+
+                <form class="row" method="POST" action="">
+                    <div class="col-md-5">
+                        <fieldset class="form-group">
+                            <label for="location">Quel quartier ?</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
+                                <select id="location" name="location" class="form-control" placeholder="Où boire une mousse ?"></select>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-4">
+                        <fieldset class="form-group">
+                            <label for="location">Avis</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-star" aria-hidden="true"></i></div>
+
+                                <input type="text" class="form-control" id="location">
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="submit" class="btn-search btn btn-primary btn-block btn-bg"><i class="fa fa-search" aria-hidden="true"></i> Trouver !</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block bodyClass %}homepage{% endblock %}
+
+{% block container %}
+    <h2 class="location">Les bars à Paris</h2>
+
+    <div class="row">
+        {% for key, district in paris %}
+            <div class="col-md-3">
+                <a class="card card-location" href="{{ path('search_city_geolocalisation', { citySlug: parisDistrictLocations[key].slug }) }}">
+                    <div class="img-card">
+
+                        <img class="card-img-top" src="http://d24k05azbhuq7p.cloudfront.net/_novaimg/galleria/231221.jpg" alt="Card image cap">
+
+                        <div class="card-img-overlay"></div>
+                        <div class="nbr-bar">
+                            <b>{{ district.nbr }}</b> bars
+                            <div class="rating" style="width: {{ district.rate*12 }}px">
+                                <div class="subrating">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="nbr-rating">
+                                {{ district.nbrRate|number_format }} avis
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="card-title">
+                        {% if loop.first %}
+                            1<sup>er</sup> arrondissement
+                        {% else %}
+                            {{ loop.index }}<sup>ème</sup> arondissement
+                        {% endif %}
+                    </h4>
+                </a>
+            </div>
+        {% endfor %}
+
+    </div>
+
+
+
+    <h2 class="location">Les bars en Ile-de-France</h2>
+
+    <div class="row cities">
+        {% for key, departement in popularCity %}
+            <div class="col-md-4">
+
+                <div class="card">
+                    <div class="card-block city-title">
+                        <h4 class="card-title">{{ departements[key].name }}</h4>
+                        <div class="card-text nbr-bar">
+                            <b>{{ departements[key].data.nbr }}</b> bars
+                            <div class="rating" style="width: {{ departements[key].data.rate*12 }}px">
+                                <div class="subrating">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="nbr-rating">
+                                {{ departements[key].data.nbrRate|number_format }} avis
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for city in departement %}
+                            <li class="list-group-item"><a href="{{ path('search_city', { cityName: city.city | lower |slugify , postalCode: city.postalCode }) }}">{{ city.city }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

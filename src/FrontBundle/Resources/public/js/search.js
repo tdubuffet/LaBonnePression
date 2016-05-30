@@ -7,7 +7,7 @@ var Search = {
 
         var height = $(window).height();
         var width = $('.col-gmaps').width();
-        console.log(width);
+        
         $('#gmaps').height(height-55);
         $('#gmaps-container').width(width);
 
@@ -29,7 +29,7 @@ var Search = {
             lat: lat,
             lng: lng,
             title: name,
-            icon: '/bundles/front/images/cocktail.png',
+            icon: path + 'bundles/front/images/location-pin.png',
             click: function(e) {
 
                 //get the top offset of the target anchor
