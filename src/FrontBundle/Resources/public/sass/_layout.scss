@@ -102,13 +102,20 @@ body{
     form{
       margin-top: 18px;
       label{
-        color: $brand-light;
+        color: $gray-lighter;
         font-size: 1.1em;
         letter-spacing: 1px;
       }
-      .form-control{
+
+      .select2-container--default .select2-selection--single,
+      .form-control,
+      .input-group-addon{
         max-height: 40px;
         border-radius: 0px;
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid $brand-primary;
+        color: $brand-primary;
       }
       .btn-bg{
         height: 40px;
