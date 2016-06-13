@@ -22,4 +22,25 @@ class Account extends BaseUser
         parent::__construct();
         // your own logic
     }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="facebook_id", type="string", nullable=true)
+     */
+    protected $facebook_id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="google_id", type="string", nullable=true)
+     */
+    protected $google_id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="twitter_id", type="string", nullable=true)
+     */
+    protected $twitter_id;
 }
