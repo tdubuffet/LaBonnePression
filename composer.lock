@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b8627f67c6e4498cf4866b4434da325c",
-    "content-hash": "130d2a15402f816f72c8978fafea44de",
+    "hash": "4e8b9ca957347861174303edae2f47d2",
+    "content-hash": "646b3c23c7235fd8969957af280f133a",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -837,6 +837,79 @@
             "time": "2016-01-05 21:34:58"
         },
         {
+            "name": "fp/jsformvalidator-bundle",
+            "version": "dev-master",
+            "target-dir": "Fp/JsFormValidatorBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/formapro/JsFormValidatorBundle.git",
+                "reference": "2d4cd01f99c9a98ebb9400b3fa092d349ebcf7d1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/formapro/JsFormValidatorBundle/zipball/2d4cd01f99c9a98ebb9400b3fa092d349ebcf7d1",
+                "reference": "2d4cd01f99c9a98ebb9400b3fa092d349ebcf7d1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/form": "^2.7|^3.0",
+                "symfony/validator": "^2.7|^3.0"
+            },
+            "require-dev": {
+                "behat/mink-bundle": "dev-master",
+                "behat/mink-selenium2-driver": "^1.1.0",
+                "doctrine/doctrine-bundle": "~1.4",
+                "doctrine/orm": ">=2.2.3",
+                "phpunit/phpunit": "3.7.*",
+                "ptcong/php-image-uploader": "^6.0",
+                "satooshi/php-coveralls": "1.0.*",
+                "se/selenium-server-standalone": "2.*",
+                "symfony/assetic-bundle": ">=2.5",
+                "symfony/symfony": "^3.0"
+            },
+            "suggest": {
+                "doctrine/doctrine-bundle": "For the UniqueEntity validation",
+                "doctrine/orm": "For the UniqueEntity validation",
+                "symfony/assetic-bundle": "For easy enabling",
+                "symfony/symfony": "For using as a Symfony Bundle and for using a default ajax validation"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Fp\\JsFormValidatorBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ton Sharp",
+                    "email": "66ton99@gmail.com"
+                },
+                {
+                    "name": "Yury Maltsev",
+                    "email": "dev.yury.maltsev@gmail.com"
+                }
+            ],
+            "description": "Javascript validation for sf2 forms.",
+            "homepage": "https://github.com/formapro/JsFormValidatorBundle",
+            "keywords": [
+                "form",
+                "javascript",
+                "symfony",
+                "validation"
+            ],
+            "time": "2016-03-29 14:06:14"
+        },
+        {
             "name": "friendsofsymfony/elastica-bundle",
             "version": "dev-master",
             "source": {
@@ -918,6 +991,75 @@
                 "search"
             ],
             "time": "2016-05-19 08:16:28"
+        },
+        {
+            "name": "friendsofsymfony/user-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
+                "reference": "d1fccc6335b74beca94525551cacc06b256ed261"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/d1fccc6335b74beca94525551cacc06b256ed261",
+                "reference": "d1fccc6335b74beca94525551cacc06b256ed261",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9",
+                "symfony/form": "~2.3|~3.0",
+                "symfony/framework-bundle": "~2.3|~3.0",
+                "symfony/security-bundle": "~2.3|~3.0",
+                "symfony/twig-bundle": "~2.3|~3.0"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "~1.3",
+                "swiftmailer/swiftmailer": "~4.3|~5",
+                "symfony/console": "~2.3|~3.0",
+                "symfony/phpunit-bridge": "~2.7|~3.0",
+                "symfony/validator": "~2.3|~3.0",
+                "symfony/yaml": "~2.3|~3.0",
+                "willdurand/propel-typehintable-behavior": "~1.0"
+            },
+            "suggest": {
+                "willdurand/propel-typehintable-behavior": "Needed when using the propel implementation"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FOS\\UserBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christophe Coevoet",
+                    "email": "stof@notk.org"
+                },
+                {
+                    "name": "FriendsOfSymfony Community",
+                    "homepage": "https://github.com/friendsofsymfony/FOSUserBundle/contributors"
+                },
+                {
+                    "name": "Thibault Duplessis",
+                    "email": "thibault.duplessis@gmail.com"
+                }
+            ],
+            "description": "Symfony FOSUserBundle",
+            "homepage": "http://friendsofsymfony.github.com",
+            "keywords": [
+                "User management"
+            ],
+            "time": "2016-05-27 12:14:43"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1373,61 +1515,6 @@
                 "psr-3"
             ],
             "time": "2012-12-21 11:40:51"
-        },
-        {
-            "name": "pugx/autocompleter-bundle",
-            "version": "v1.2.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PUGX/PUGXAutoCompleterBundle.git",
-                "reference": "c4eb82096c6a38dbfecf1c1d8baee21f45774963"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PUGX/PUGXAutoCompleterBundle/zipball/c4eb82096c6a38dbfecf1c1d8baee21f45774963",
-                "reference": "c4eb82096c6a38dbfecf1c1d8baee21f45774963",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/orm": "~2.2",
-                "symfony/form": "~2.3|~3.0",
-                "symfony/framework-bundle": "~2.3|~3.0"
-            },
-            "require-dev": {
-                "lexik/form-filter-bundle": ">=3.0",
-                "phpunit/phpunit": "4.*|5.*"
-            },
-            "suggest": {
-                "lexik/form-filter-bundle": "To use autocomplete on a filter."
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PUGX\\AutocompleterBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-3.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Massimiliano Arione",
-                    "email": "garakkio@gmail.com"
-                }
-            ],
-            "description": "Add an autocomplete type to forms",
-            "keywords": [
-                "field",
-                "form",
-                "symfony"
-            ],
-            "time": "2016-05-09 13:47:05"
         },
         {
             "name": "ruflin/elastica",
@@ -2414,6 +2501,61 @@
     ],
     "packages-dev": [
         {
+            "name": "pugx/autocompleter-bundle",
+            "version": "v1.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PUGX/PUGXAutoCompleterBundle.git",
+                "reference": "c4eb82096c6a38dbfecf1c1d8baee21f45774963"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PUGX/PUGXAutoCompleterBundle/zipball/c4eb82096c6a38dbfecf1c1d8baee21f45774963",
+                "reference": "c4eb82096c6a38dbfecf1c1d8baee21f45774963",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": "~2.2",
+                "symfony/form": "~2.3|~3.0",
+                "symfony/framework-bundle": "~2.3|~3.0"
+            },
+            "require-dev": {
+                "lexik/form-filter-bundle": ">=3.0",
+                "phpunit/phpunit": "4.*|5.*"
+            },
+            "suggest": {
+                "lexik/form-filter-bundle": "To use autocomplete on a filter."
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PUGX\\AutocompleterBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Massimiliano Arione",
+                    "email": "garakkio@gmail.com"
+                }
+            ],
+            "description": "Add an autocomplete type to forms",
+            "keywords": [
+                "field",
+                "form",
+                "symfony"
+            ],
+            "time": "2016-05-09 13:47:05"
+        },
+        {
             "name": "sensio/generator-bundle",
             "version": "v3.0.6",
             "source": {
@@ -2531,7 +2673,9 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "friendsofsymfony/elastica-bundle": 20
+        "friendsofsymfony/elastica-bundle": 20,
+        "friendsofsymfony/user-bundle": 20,
+        "fp/jsformvalidator-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

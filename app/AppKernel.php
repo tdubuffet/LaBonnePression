@@ -30,11 +30,14 @@ class AppKernel extends Kernel
             new FOS\ElasticaBundle\FOSElasticaBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Fp\JsFormValidatorBundle\FpJsFormValidatorBundle(),
 
 
             new FrontBundle\FrontBundle(),
             new CrawlerBundle\CrawlerBundle(),
             new InstitutionBundle\InstitutionBundle(),
+            new UserBundle\UserBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

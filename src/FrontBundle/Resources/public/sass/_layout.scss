@@ -2,21 +2,17 @@
 $header-height: 55px;
 $header-line-height: 52px;
 
-
 body{
-  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
 }
 
 .header{
   background: $brand-primary;
   width: 100%;
+  position: relative;
+  z-index: 10;
   min-height: $header-height;
-  position:fixed;
-  top: 0px;
-  left: 0px;
-  z-index: 50;
-
-
   box-shadow:  0px 0px 5px rgba($dark, 0.6);
 
   .logo{
@@ -36,17 +32,21 @@ body{
     line-height: $header-line-height;
     .btn {
       color: $brand-light;
-      text-transform: uppercase;
       font-size: 0.9em;
+    }
+
+    .btn-group > .btn{
+      background: none;
+      border: none;
     }
   }
 }
 
 .subheader{
   min-height: 550px;
-  background: url(../bundles/front/images/heroBeer.jpg) no-repeat center center fixed;
   background-size: cover;
   position: relative;
+  overflow: hidden;
 
   .subVideo{
     max-height: 550px;
@@ -58,7 +58,7 @@ body{
 
   .slogan{
     text-align: center;
-    font-size: 2.6em;
+    font-size: 2em;
     line-height: 1em;
     top: 50%;
     position: absolute;
@@ -132,13 +132,13 @@ body{
 .location{
   margin-top: 50px;
   margin-bottom: 20px;
-  color: $gray-light;
+  color: $brand-primary;
   width: 40%;
   margin: 60px auto;
   text-align: center;
   padding: 14px 0;
-  border-top: 1px solid $gray-light;
-  border-bottom: 1px solid $gray-light;
+  border-top: 1px solid $brand-primary;
+  border-bottom: 1px solid $brand-primary;
   font-size: 1.2em;
   text-transform: uppercase;
 }
@@ -246,4 +246,49 @@ body{
     }
   }
 
+}
+
+.row-no-padding {
+  [class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+.btn-network-group{
+
+  margin: 15px 0 50px 0;
+
+  .btn-facebook{
+    background: #4c66a4;
+    color: white;
+    font-size: 1.5em;
+    &:hover{
+      color: white;
+    }
+  }
+
+  .btn-twitter{
+    background: #55acee;
+    color: white;
+    font-size: 1.5em;
+    &:hover{
+      color: white;
+    }
+  }
+
+  .btn-google{
+    background: #d34836;
+    color: white;
+    font-size: 1.5em;
+    &:hover{
+      color: white;
+    }
+  }
+}
+
+footer{
+  background: $brand-light;
+  margin-top: 30px;
+  min-height: 150px;
 }

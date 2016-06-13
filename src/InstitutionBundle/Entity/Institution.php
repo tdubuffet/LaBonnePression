@@ -3,6 +3,7 @@
 namespace InstitutionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use InstitutionBundle\Model\UID;
 
 /**
  * Institution
@@ -89,11 +90,18 @@ class Institution
 
 
     /**
+ * @var float
+ *
+ * @ORM\Column(name="website", type="string", length=255, nullable=true)
+ */
+    private $website;
+
+    /**
      * @var float
      *
-     * @ORM\Column(name="website", type="string", length=255, nullable=true)
+     * @ORM\Column(name="secret_code", type="string", length=8, nullable=false, unique=true)
      */
-    private $website;
+    private $secretCode = null;
 
 
 
@@ -154,6 +162,17 @@ class Institution
      */
     private $googleAddressComponents;
 
+
+    public function __construct()
+    {
+
+        if($this->secretCode == null) {
+            $code = new UID();
+
+            $this->secretCode = $code->limit(8);
+        }
+
+    }
 
     /**
      * Get id
@@ -478,6 +497,26 @@ class Institution
     {
         
     }
+
+    /**
+     * @return float
+     */
+    public function getSecretCode()
+    {
+        return $this->secretCode;
+    }
+
+    /**
+     * @param float $secretCode
+     */
+    public function setSecretCode()
+    {
+        $code = new UID();
+
+        $this->secretCode = $code->limit(8);
+    }
+
+
 
 }
 

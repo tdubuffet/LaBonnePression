@@ -76,7 +76,7 @@ class DefaultController extends Controller
         ];
 
 
-        return $this->render('FrontBundle:Default:index.html.twig', array(
+        return $this->render('FrontBundle:Default:homepage.html.twig', array(
             'paris'                     => $parisDisctrict,
             'popularCity'               => $popularCity,
             'departements'              => $departements,

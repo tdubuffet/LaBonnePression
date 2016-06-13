@@ -2,29 +2,27 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>{% block title %}{% endblock %} - La bonne pression</title>
+    <title>{% block title %}{% endblock %} - Au bon comptoir</title>
 
 
     <link href="{{ asset('/css/master.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.2/css/tether-theme-basic.min.css" rel="stylesheet">
 </head>
 <body class="{% block bodyClass %}{% endblock %}">
-{% block header %}
-<div class="header">
 
-    <div class="container">
-        <div class="row">
-            <a class="col-md-4 logo" href="{{ path('homepage') }}" tile="La Bonne Pression">
-                <img src="{{ asset('bundles/front/images/logo-icon.png') }}" alt="La bonne pression" /> La bonne pression
-            </a>
-            <div class="col-md-8 menu-account">
-                <button type="button" class="btn btn-link"><i class="fa fa-user" aria-hidden="true"></i> Créer un compte</button>
-                <button type="button" class="btn btn-link"><i class="fa fa-user-plus" aria-hidden="true"></i> Se connecter</button>
+{% block header %}
+    <div class="header">
+
+        <div class="container">
+            <div class="row">
+                <a class="col-md-4 logo" href="{{ path('homepage') }}" tile="La Bonne Pression">Au bon comptoir</a>
+                <div class="col-md-8 menu-account">
+                    {% include 'FrontBundle:Default:header_account.html.twig' %}
+                </div>
             </div>
         </div>
-    </div>
 
-</div>
+    </div>
 {% endblock %}
 
 {% block wrapper %}{% endblock %}
@@ -35,10 +33,11 @@
 
 </div>
 
+<footer>
 
-<script type="text/javascript">
-    var path = '{{ url('homepage') }}'.replace('app_dev.php', '');
-</script>
+</footer>
+
+
 <script type="text/javascript" src="{{ asset('/components/jquery/dist/jquery.min.js') }}"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.2/js/tether.min.js"></script>
 <script type="text/javascript" src="{{ asset('/components/bootstrap/dist/js/bootstrap.min.js') }}"></script>

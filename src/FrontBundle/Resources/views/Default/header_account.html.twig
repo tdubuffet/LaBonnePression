@@ -1,0 +1,25 @@
+{% if app.user %}
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Bonjour {{ app.user.username }}
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
+        </div>
+    </div>
+
+{% else %}
+    <a href="{{ path('fos_user_registration_register') }}" class="btn btn-link" title="Créer un compte au bon comptoir">
+        <i class="fa fa-user-plus" aria-hidden="true"></i>
+        Créer un compte
+    </a>
+    <a href="{{ path('fos_user_security_login') }}" class="btn btn-link" title="Se connecter au bon comptoir">
+        <i class="fa fa-user" aria-hidden="true"></i>
+        Se connecter
+    </a>
+{% endif %}
