@@ -99,7 +99,7 @@ class Institution
     /**
      * @var float
      *
-     * @ORM\Column(name="secret_code", type="string", length=8, nullable=false, unique=true)
+     * @ORM\Column(name="secret_code", type="string", length=8, nullable=false)
      */
     private $secretCode = null;
 

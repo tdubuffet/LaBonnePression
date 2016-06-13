@@ -4,6 +4,8 @@ namespace UserBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="account")
@@ -23,24 +25,169 @@ class Account extends BaseUser
         // your own logic
     }
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="facebook_id", type="string", nullable=true)
-     */
+    /** @ORM\Column(name="facebook_id", type="string", length=255, nullable=true) */
     protected $facebook_id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="google_id", type="string", nullable=true)
-     */
+    /** @ORM\Column(name="facebook_access_token", type="string", length=255, nullable=true) */
+    protected $facebook_access_token;
+
+    /** @ORM\Column(name="google_id", type="string", length=255, nullable=true) */
     protected $google_id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="twitter_id", type="string", nullable=true)
-     */
+    /** @ORM\Column(name="google_access_token", type="string", length=255, nullable=true) */
+    protected $google_access_token;
+
+
+    /** @ORM\Column(name="twitter_id", type="string", length=255, nullable=true) */
     protected $twitter_id;
+
+    /** @ORM\Column(name="twitter_access_token", type="string", length=255, nullable=true) */
+    protected $twitter_access_token;
+
+
+    /**
+     * @ORM\Column(name="firstname", type="string", length=55, nullable=true)
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "55"
+     * )
+     */
+    protected $firstname;
+
+    /**
+     * @ORM\Column(name="lastname", type="string", length=55, nullable=true)
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "55"
+     * )
+     */
+    protected $lastname;
+
+    /**
+     * @return mixed
+     */
+    public function getFacebookId()
+    {
+        return $this->facebook_id;
+    }
+
+    /**
+     * @param mixed $facebook_id
+     */
+    public function setFacebookId($facebook_id)
+    {
+        $this->facebook_id = $facebook_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFacebookAccessToken()
+    {
+        return $this->facebook_access_token;
+    }
+
+    /**
+     * @param mixed $facebook_access_token
+     */
+    public function setFacebookAccessToken($facebook_access_token)
+    {
+        $this->facebook_access_token = $facebook_access_token;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGoogleId()
+    {
+        return $this->google_id;
+    }
+
+    /**
+     * @param mixed $google_id
+     */
+    public function setGoogleId($google_id)
+    {
+        $this->google_id = $google_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGoogleAccessToken()
+    {
+        return $this->google_access_token;
+    }
+
+    /**
+     * @param mixed $google_access_token
+     */
+    public function setGoogleAccessToken($google_access_token)
+    {
+        $this->google_access_token = $google_access_token;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTwitterId()
+    {
+        return $this->twitter_id;
+    }
+
+    /**
+     * @param mixed $twitter_id
+     */
+    public function setTwitterId($twitter_id)
+    {
+        $this->twitter_id = $twitter_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTwitterAccessToken()
+    {
+        return $this->twitter_access_token;
+    }
+
+    /**
+     * @param mixed $twitter_access_token
+     */
+    public function setTwitterAccessToken($twitter_access_token)
+    {
+        $this->twitter_access_token = $twitter_access_token;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * @param mixed $firstname
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * @param mixed $lastname
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+    }
 }

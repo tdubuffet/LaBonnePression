@@ -31,7 +31,7 @@ class AppKernel extends Kernel
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new Fp\JsFormValidatorBundle\FpJsFormValidatorBundle(),
+            new \HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
 
 
             new FrontBundle\FrontBundle(),

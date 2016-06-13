@@ -1,3 +1,33 @@
+hwi_oauth_security:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix: /connect
+
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+hwi_oauth_connect:
+    resource: "@UserBundle/Resources/config/routing-oauth.xml"
+    prefix: /connect
+
+facebook_login:
+    path: /login/check-facebook
+
+facebook_connect:
+    path: /connect/facebook
+
+twitter_login:
+    path: /login/check-twitter
+
+twitter_connect:
+    path: /connect/twitter
+
+google_login:
+    path: /login/check-google
+
+google_connect:
+    path: /connect/google
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 

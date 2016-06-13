@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4e8b9ca957347861174303edae2f47d2",
-    "content-hash": "646b3c23c7235fd8969957af280f133a",
+    "hash": "52b21a719d5add35e5c24534bb613ed9",
+    "content-hash": "514a34efc579fdce1bcf0a73b1b7599a",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -420,16 +420,16 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "1.6.2",
+            "version": "1.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "e9c2ccf573b59b7cea566390f34254fed3c20ed9"
+                "reference": "fd51907c6c76acaa8a5234822a4f901c1500afc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/e9c2ccf573b59b7cea566390f34254fed3c20ed9",
-                "reference": "e9c2ccf573b59b7cea566390f34254fed3c20ed9",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/fd51907c6c76acaa8a5234822a4f901c1500afc1",
+                "reference": "fd51907c6c76acaa8a5234822a4f901c1500afc1",
                 "shasum": ""
             },
             "require": {
@@ -446,13 +446,14 @@
                 "phpunit/phpunit": "~4",
                 "satooshi/php-coveralls": "~0.6.1",
                 "symfony/phpunit-bridge": "~2.7|~3.0",
+                "symfony/property-info": "~2.8|~3.0",
                 "symfony/validator": "~2.2|~3.0",
                 "symfony/yaml": "~2.2|~3.0",
                 "twig/twig": "~1.10"
             },
             "suggest": {
                 "doctrine/orm": "The Doctrine ORM integration is optional in the bundle.",
-                "symfony/web-profiler-bundle": "to use the data collector"
+                "symfony/web-profiler-bundle": "To use the data collector."
             },
             "type": "symfony-bundle",
             "extra": {
@@ -495,7 +496,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2016-01-10 17:21:44"
+            "time": "2016-04-21 19:55:56"
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
@@ -837,90 +838,17 @@
             "time": "2016-01-05 21:34:58"
         },
         {
-            "name": "fp/jsformvalidator-bundle",
-            "version": "dev-master",
-            "target-dir": "Fp/JsFormValidatorBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/formapro/JsFormValidatorBundle.git",
-                "reference": "2d4cd01f99c9a98ebb9400b3fa092d349ebcf7d1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/formapro/JsFormValidatorBundle/zipball/2d4cd01f99c9a98ebb9400b3fa092d349ebcf7d1",
-                "reference": "2d4cd01f99c9a98ebb9400b3fa092d349ebcf7d1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2",
-                "symfony/form": "^2.7|^3.0",
-                "symfony/validator": "^2.7|^3.0"
-            },
-            "require-dev": {
-                "behat/mink-bundle": "dev-master",
-                "behat/mink-selenium2-driver": "^1.1.0",
-                "doctrine/doctrine-bundle": "~1.4",
-                "doctrine/orm": ">=2.2.3",
-                "phpunit/phpunit": "3.7.*",
-                "ptcong/php-image-uploader": "^6.0",
-                "satooshi/php-coveralls": "1.0.*",
-                "se/selenium-server-standalone": "2.*",
-                "symfony/assetic-bundle": ">=2.5",
-                "symfony/symfony": "^3.0"
-            },
-            "suggest": {
-                "doctrine/doctrine-bundle": "For the UniqueEntity validation",
-                "doctrine/orm": "For the UniqueEntity validation",
-                "symfony/assetic-bundle": "For easy enabling",
-                "symfony/symfony": "For using as a Symfony Bundle and for using a default ajax validation"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Fp\\JsFormValidatorBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ton Sharp",
-                    "email": "66ton99@gmail.com"
-                },
-                {
-                    "name": "Yury Maltsev",
-                    "email": "dev.yury.maltsev@gmail.com"
-                }
-            ],
-            "description": "Javascript validation for sf2 forms.",
-            "homepage": "https://github.com/formapro/JsFormValidatorBundle",
-            "keywords": [
-                "form",
-                "javascript",
-                "symfony",
-                "validation"
-            ],
-            "time": "2016-03-29 14:06:14"
-        },
-        {
             "name": "friendsofsymfony/elastica-bundle",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSElasticaBundle.git",
-                "reference": "5f09daac95cfad96a99867c064e396d24f743567"
+                "reference": "ff884828f51af243e7278fc1867fb47d98e981e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSElasticaBundle/zipball/5f09daac95cfad96a99867c064e396d24f743567",
-                "reference": "5f09daac95cfad96a99867c064e396d24f743567",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSElasticaBundle/zipball/ff884828f51af243e7278fc1867fb47d98e981e5",
+                "reference": "ff884828f51af243e7278fc1867fb47d98e981e5",
                 "shasum": ""
             },
             "require": {
@@ -990,7 +918,7 @@
                 "propel",
                 "search"
             ],
-            "time": "2016-05-19 08:16:28"
+            "time": "2016-05-30 08:45:54"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -1060,6 +988,146 @@
                 "User management"
             ],
             "time": "2016-05-27 12:14:43"
+        },
+        {
+            "name": "hwi/oauth-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hwi/HWIOAuthBundle.git",
+                "reference": "79ca655427847581def1a6254ae4058606c6894c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/79ca655427847581def1a6254ae4058606c6894c",
+                "reference": "79ca655427847581def1a6254ae4058606c6894c",
+                "shasum": ""
+            },
+            "require": {
+                "kriswallsmith/buzz": "~0.13",
+                "php": ">=5.3.3",
+                "symfony/form": "~2.3|~3.0",
+                "symfony/framework-bundle": "~2.3|~3.0",
+                "symfony/options-resolver": "~2.3|~3.0",
+                "symfony/security-bundle": "~2.3|~3.0",
+                "symfony/yaml": "~2.3|~3.0"
+            },
+            "conflict": {
+                "twig/twig": "<1.12"
+            },
+            "require-dev": {
+                "doctrine/orm": "~2.3",
+                "friendsofsymfony/user-bundle": "~1.3|~2.0",
+                "phpunit/phpunit": "~4.8|~5.0",
+                "symfony/phpunit-bridge": "~2.7|~3.0",
+                "symfony/property-access": "~2.3|~3.0",
+                "symfony/twig-bundle": "~2.3|~3.0",
+                "symfony/validator": "~2.3|~3.0"
+            },
+            "suggest": {
+                "doctrine/doctrine-bundle": "to use Doctrine user provider",
+                "friendsofsymfony/user-bundle": "to connect FOSUB with this bundle",
+                "symfony/property-access": "to use FOSUB integration with this bundle",
+                "symfony/twig-bundle": "to use the Twig hwi_oauth_* functions"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "HWI\\Bundle\\OAuthBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/hwi/HWIOAuthBundle/contributors"
+                },
+                {
+                    "name": "Joseph Bielawski",
+                    "email": "stloyd@gmail.com"
+                },
+                {
+                    "name": "Alexander",
+                    "email": "iam.asm89@gmail.com"
+                },
+                {
+                    "name": "Geoffrey Bachelet",
+                    "email": "geoffrey.bachelet@gmail.com"
+                }
+            ],
+            "description": "Support for authenticating users using both OAuth1.0a and OAuth2 in Symfony2.",
+            "homepage": "http://github.com/hwi/HWIOAuthBundle",
+            "keywords": [
+                "37signals",
+                "Authentication",
+                "Deezer",
+                "EVE Online",
+                "amazon",
+                "auth0",
+                "azure",
+                "bitbucket",
+                "bitly",
+                "box",
+                "bufferapp",
+                "dailymotion",
+                "deviantart",
+                "discogs",
+                "disqus",
+                "dropbox",
+                "eventbrite",
+                "facebook",
+                "firewall",
+                "fiware",
+                "flickr",
+                "foursquare",
+                "github",
+                "google",
+                "hubic",
+                "instagram",
+                "jira",
+                "linkedin",
+                "mail.ru",
+                "oauth",
+                "oauth1",
+                "oauth2",
+                "odnoklassniki",
+                "paypal",
+                "qq",
+                "reddit",
+                "runkeeper",
+                "salesforce",
+                "security",
+                "sensio connect",
+                "sina weibo",
+                "slack",
+                "sound cloud",
+                "spotify",
+                "stack exchange",
+                "stereomood",
+                "strava",
+                "toshl",
+                "trakt",
+                "trello",
+                "twitch",
+                "twitter",
+                "vkontakte",
+                "wechat",
+                "windows live",
+                "wordpress",
+                "xing",
+                "yahoo",
+                "yandex",
+                "youtube"
+            ],
+            "time": "2016-05-29 23:18:01"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1284,6 +1352,54 @@
                 "minification"
             ],
             "time": "2015-11-12 13:51:40"
+        },
+        {
+            "name": "kriswallsmith/buzz",
+            "version": "v0.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kriswallsmith/Buzz.git",
+                "reference": "d4041666c3ffb379af02a92dabe81c904b35fab8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/d4041666c3ffb379af02a92dabe81c904b35fab8",
+                "reference": "d4041666c3ffb379af02a92dabe81c904b35fab8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "suggest": {
+                "ext-curl": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Buzz": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Lightweight HTTP client",
+            "homepage": "https://github.com/kriswallsmith/Buzz",
+            "keywords": [
+                "curl",
+                "http client"
+            ],
+            "time": "2015-06-25 17:26:56"
         },
         {
             "name": "monolog/monolog",
@@ -2257,16 +2373,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v3.0.6",
+            "version": "v3.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "a821ed51b87f5ceda834140e5f0c06e9547a86d4"
+                "reference": "272ab3327c3d311aaa9f634730162ea00e9d9e93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/a821ed51b87f5ceda834140e5f0c06e9547a86d4",
-                "reference": "a821ed51b87f5ceda834140e5f0c06e9547a86d4",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/272ab3327c3d311aaa9f634730162ea00e9d9e93",
+                "reference": "272ab3327c3d311aaa9f634730162ea00e9d9e93",
                 "shasum": ""
             },
             "require": {
@@ -2383,20 +2499,20 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-05-09 22:13:31"
+            "time": "2016-06-06 16:52:46"
         },
         {
             "name": "twig/twig",
-            "version": "v1.24.0",
+            "version": "v1.24.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "3e5aa30ebfbafd5951fb1b01e338e1800ce7e0e8"
+                "reference": "3566d311a92aae4deec6e48682dc5a4528c4a512"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/3e5aa30ebfbafd5951fb1b01e338e1800ce7e0e8",
-                "reference": "3e5aa30ebfbafd5951fb1b01e338e1800ce7e0e8",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/3566d311a92aae4deec6e48682dc5a4528c4a512",
+                "reference": "3566d311a92aae4deec6e48682dc5a4528c4a512",
                 "shasum": ""
             },
             "require": {
@@ -2444,7 +2560,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-01-25 21:22:18"
+            "time": "2016-05-30 09:11:59"
         },
         {
             "name": "white-october/pagerfanta-bundle",
@@ -2501,61 +2617,6 @@
     ],
     "packages-dev": [
         {
-            "name": "pugx/autocompleter-bundle",
-            "version": "v1.2.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PUGX/PUGXAutoCompleterBundle.git",
-                "reference": "c4eb82096c6a38dbfecf1c1d8baee21f45774963"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PUGX/PUGXAutoCompleterBundle/zipball/c4eb82096c6a38dbfecf1c1d8baee21f45774963",
-                "reference": "c4eb82096c6a38dbfecf1c1d8baee21f45774963",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/orm": "~2.2",
-                "symfony/form": "~2.3|~3.0",
-                "symfony/framework-bundle": "~2.3|~3.0"
-            },
-            "require-dev": {
-                "lexik/form-filter-bundle": ">=3.0",
-                "phpunit/phpunit": "4.*|5.*"
-            },
-            "suggest": {
-                "lexik/form-filter-bundle": "To use autocomplete on a filter."
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PUGX\\AutocompleterBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-3.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Massimiliano Arione",
-                    "email": "garakkio@gmail.com"
-                }
-            ],
-            "description": "Add an autocomplete type to forms",
-            "keywords": [
-                "field",
-                "form",
-                "symfony"
-            ],
-            "time": "2016-05-09 13:47:05"
-        },
-        {
             "name": "sensio/generator-bundle",
             "version": "v3.0.6",
             "source": {
@@ -2609,16 +2670,16 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v3.0.6",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "3231629ff97abccd60f93ff900accfb5b39c8200"
+                "reference": "f5e7cdc9b5cd3f7d9b0228692cd6ec5736c3b074"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/3231629ff97abccd60f93ff900accfb5b39c8200",
-                "reference": "3231629ff97abccd60f93ff900accfb5b39c8200",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/f5e7cdc9b5cd3f7d9b0228692cd6ec5736c3b074",
+                "reference": "f5e7cdc9b5cd3f7d9b0228692cd6ec5736c3b074",
                 "shasum": ""
             },
             "require": {
@@ -2630,7 +2691,7 @@
             "type": "symfony-bridge",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -2660,7 +2721,7 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2016-04-12 18:09:53"
+            "time": "2016-04-12 18:27:47"
         }
     ],
     "aliases": [
@@ -2675,7 +2736,7 @@
     "stability-flags": {
         "friendsofsymfony/elastica-bundle": 20,
         "friendsofsymfony/user-bundle": 20,
-        "fp/jsformvalidator-bundle": 20
+        "hwi/oauth-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
