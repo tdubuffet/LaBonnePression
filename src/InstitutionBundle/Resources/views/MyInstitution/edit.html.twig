@@ -1,0 +1,71 @@
+{% extends 'FrontBundle:Layout:skeleton.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}Mes établissements{% endblock %}
+
+
+{% block bodyClass %}user-institutions{% endblock %}
+
+{% block container %}
+    <h1 class="location">Mon établissement <br /> {{ institution.name }}</h1>
+
+    <ol class="breadcrumb">
+
+        <li><a href="{{ path('homepage') }}">Le comptoir</a></li>
+        <li><a href="{{ path('account_institutions') }}">Mes établissements</a></li>
+        <li class="active">{{ institution.name }}</li>
+    </ol>
+
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="list-group" role="tablist">
+                <a href="#informations" class="nav-link list-group-item active" data-toggle="tab" role="tab">
+                    <i class="fa fa-info" aria-hidden="true"></i> Informations principales
+                </a>
+                <a href="#clock" class="nav-link list-group-item" data-toggle="tab" role="tab">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> Mes horraires
+                </a>
+                <a href="#beer" class="nav-link list-group-item" data-toggle="tab" role="tab">
+                    <i class="fa fa-beer" aria-hidden="true"></i> Ma carte
+                </a>
+                <a href="#event" class="nav-link list-group-item" data-toggle="tab" role="tab">
+                    <i class="fa fa-calendar" aria-hidden="true"></i> Mes événements
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+
+            {{ form_start(form) }}
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="informations" role="tabpanel">
+                        {{ form_row(form.name) }}
+                        {{ form_row(form.category) }}
+                        {{ form_row(form.formattedPhoneNumber) }}
+                        {{ form_row(form.formattedInternationalPhoneNumber) }}
+                        {{ form_row(form.email) }}
+                        {{ form_row(form.city) }}
+                        {{ form_row(form.postalCode) }}
+                        {{ form_row(form.website) }}
+                    </div>
+                    <div class="tab-pane" id="clock" role="tabpanel">
+
+                    </div>
+                    <div class="tab-pane" id="beer" role="tabpanel">
+
+                    </div>
+                    <div class="tab-pane" id="event" role="tabpanel">
+
+                    </div>
+                </div>
+
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+
+{% endblock %}

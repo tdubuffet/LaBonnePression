@@ -1,0 +1,40 @@
+{% extends 'FrontBundle:Layout:skeleton.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}Mon profil{% endblock %}
+
+
+{% block bodyClass %}institution-assignCode-page{% endblock %}
+
+{% block container %}
+    <h1 class="location">Demande prise en concidération</h1>
+
+    <ol class="breadcrumb">
+
+        <li><a href="{{ path('homepage') }}">Le comptoir</a></li>
+        <li class="active">Demande prise en concidération</li>
+    </ol>
+
+
+    {% if institution %}
+
+        <div class="row">
+            <div class="col-md-4 text-xs-center">
+                <img src="{{ asset('/bundles/institution/images/medal.png') }}" />
+            </div>
+
+            <div class="col-md-8 text-xs-center">
+                Votre demande d'enregistrement de votre établissement "{{ institution.name }}" est prise en concidération. <br />
+                Notre équipe de modération va vérifier la validité des informations que vous nous avez transmis.<br />
+                Afin de valider la qualité de notre selection d'établissement, notre équipe de modération peut vous contacter à tout moment sur les informations de contact que vous avez préalablement renseigné.
+
+            </div>
+        </div>
+
+    {% endif %}
+
+
+
+
+{% endblock %}

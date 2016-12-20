@@ -1,0 +1,31 @@
+{% extends 'FrontBundle:Layout:skeleton.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}Modifier mon établissement{% endblock %}
+
+
+{% block bodyClass %}institution-edit-page{% endblock %}
+
+{% block container %}
+    <h1 class="location">Modifier mon établissement</h1>
+
+    <ol class="breadcrumb">
+
+        <li><a href="{{ path('homepage') }}">Le comptoir</a></li>
+        <li><a href="{{ path('institution_create_step_code') }}">Le comptoir</a></li>
+        <li class="active">Mon établissement</li>
+    </ol>
+
+    {{ form_start(form) }}
+
+        {{ form_widget(form) }}
+
+        <div class="text-xs-center">
+            <button type="submit" class="btn btn btn-primary">
+                Valider les informations
+            </button>
+        </div>
+
+    {{ form_end(form) }}
+{% endblock %}

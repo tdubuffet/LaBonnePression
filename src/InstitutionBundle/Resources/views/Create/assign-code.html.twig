@@ -1,0 +1,86 @@
+{% extends 'FrontBundle:Layout:skeleton.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}Mon profil{% endblock %}
+
+
+{% block bodyClass %}institution-assignCode-page{% endblock %}
+
+{% block container %}
+    <h1 class="location">J'ai reçu une invitation avec un code</h1>
+
+    <ol class="breadcrumb">
+
+        <li><a href="{{ path('homepage') }}">Le comptoir</a></li>
+        <li class="active">Assigner mon code</li>
+    </ol>
+
+
+    {% if institution is null %}
+        {{ form_start(code) }}
+
+            {{ form_row(code.secretCode) }}
+
+            <div class="text-xs-center">
+                <button type="submit" class="btn btn btn-primary">
+                    Je valide
+                </button>
+            </div>
+
+        {{ form_end(code) }}
+
+    {% endif %}
+
+    {% if institution %}
+
+        <h3>Résultat pour le code: {{ institution.secretCode }}</h3>
+
+        <div class="row">
+            <div class="col-md-4">Nom</div>
+            <div class="col-md-8">{{ institution.name }}</div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4">Adresse</div>
+            <div class="col-md-8">{{ institution.formattedAddress }}</div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4">Code postal</div>
+            <div class="col-md-8">{{ institution.postalCode }}</div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4">Ville</div>
+            <div class="col-md-8">{{ institution.city }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">Numéro de téléphone</div>
+            <div class="col-md-8">{{ institution.formattedPhoneNumber }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">Adresse email</div>
+            <div class="col-md-8">{{ institution.email }}</div>
+        </div>
+
+        <div class="text-xs-center">
+            <a href="{{ path('institution_create_step_2', {'secretCode': institution.secretCode }) }}" class="btn btn btn-primary" title="Je confirme, c'est mon établissement.">
+                Je confirme, c'est mon établissement !
+            </a>
+
+            <a href="{{ path('institution_create_step_code') }}" title="Cet établissement n'est pas le miens." class="btn btn btn-warning">
+                Ce n'est pas mon établissement
+            </a>
+        </div>
+    {% endif %}
+
+
+
+
+{% endblock %}

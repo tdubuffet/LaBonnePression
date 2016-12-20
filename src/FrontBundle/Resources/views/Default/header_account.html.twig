@@ -1,11 +1,12 @@
 {% if app.user %}
 
-    <div class="btn-group">
+    <div class="btn-group dropdown-user">
         <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Bonjour {{ app.user.username }}
+            <img src="{{ app.user.getAvatar() }}" class="avatar" />Bonjour {{ app.user.username }}
         </button>
         <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="{{ path('account_edit') }}" title="Editer mon compte">Mon profil</a>
+            <a class="dropdown-item" href="{{ path('account_institutions') }}" title="Mes établissements">Mes établissements</a>
             <a class="dropdown-item" href="#">Another action</a>
             <a class="dropdown-item" href="#">Something else here</a>
             <div class="dropdown-divider"></div>

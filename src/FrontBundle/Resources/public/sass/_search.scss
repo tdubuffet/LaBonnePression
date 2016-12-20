@@ -1,4 +1,13 @@
 .search-page{
+
+  .header{
+    position: fixed;
+  }
+
+  .row-fluid-search{
+    padding-top: 55px;
+  }
+
   .row-filter{
     padding: 15px;
   }
@@ -27,17 +36,6 @@
   .row-item-card{
 
     margin: 30px 0;
-
-    .search-item-card{
-      .card{
-        h4{
-          font-size: 0.9em;
-        }
-        img{
-          width: 100%;
-        }
-      }
-    }
   }
 
   .col-gmaps{

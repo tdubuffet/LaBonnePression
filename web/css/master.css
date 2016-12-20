@@ -8877,18 +8877,93 @@ footer {
   margin-top: 30px;
   min-height: 150px; }
 
-/* line 2, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_search.scss */
+/* line 297, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_layout.scss */
+h2, h3, h4, h5, h6 {
+  color: #818a91;
+  margin-top: 35px;
+  margin-bottom: 20px; }
+
+/* line 303, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_layout.scss */
+.row-header {
+  margin-top: 30px; }
+  /* line 305, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_layout.scss */
+  .row-header .breadcrumb {
+    background: transparent;
+    margin-left: 0px;
+    padding-left: 0px; }
+  /* line 311, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_layout.scss */
+  .row-header h1 {
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 1.5em;
+    text-transform: uppercase; }
+  /* line 311, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_layout.scss */
+  .row-header h2 {
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 1.5em;
+    text-transform: uppercase; }
+  /* line 311, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_layout.scss */
+  .row-header h3 {
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 1.5em;
+    text-transform: uppercase; }
+  /* line 311, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_layout.scss */
+  .row-header h4 {
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 1.5em;
+    text-transform: uppercase; }
+  /* line 311, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_layout.scss */
+  .row-header h5 {
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 1.5em;
+    text-transform: uppercase; }
+  /* line 311, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_layout.scss */
+  .row-header h6 {
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 1.5em;
+    text-transform: uppercase; }
+
+/* line 322, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_layout.scss */
+.dropdown-user img.avatar {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+  border: 1px solid #d74848; }
+
+/* line 334, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_layout.scss */
+.search-item-card .card h4 {
+  font-size: 0.9em; }
+
+/* line 337, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_layout.scss */
+.search-item-card .card img {
+  width: 100%; }
+
+/* line 3, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_search.scss */
+.search-page .header {
+  position: fixed; }
+
+/* line 7, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_search.scss */
+.search-page .row-fluid-search {
+  padding-top: 55px; }
+
+/* line 11, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_search.scss */
 .search-page .row-filter {
   padding: 15px; }
 
-/* line 6, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_search.scss */
+/* line 15, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_search.scss */
 .search-page .breadcrumb {
   background: white;
   padding-left: 0px;
   padding-right: 0px;
   font-size: 0.8em; }
 
-/* line 13, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_search.scss */
+/* line 22, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_search.scss */
 .search-page h1 {
   margin-top: 50px;
   margin-bottom: 20px;
@@ -8902,28 +8977,22 @@ footer {
   font-size: 1.2em;
   text-transform: uppercase; }
 
-/* line 27, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_search.scss */
+/* line 36, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_search.scss */
 .search-page .row-item-card {
   margin: 30px 0; }
-  /* line 33, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_search.scss */
-  .search-page .row-item-card .search-item-card .card h4 {
-    font-size: 0.9em; }
-  /* line 36, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_search.scss */
-  .search-page .row-item-card .search-item-card .card img {
-    width: 100%; }
 
-/* line 43, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_search.scss */
+/* line 41, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_search.scss */
 .search-page .col-gmaps {
   padding-left: 0;
   padding-right: 0; }
 
-/* line 47, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_search.scss */
+/* line 45, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_search.scss */
 .search-page #gmaps-container {
   width: 100%;
   position: fixed;
   border-right: 2px solid #eceeef; }
 
-/* line 53, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_search.scss */
+/* line 51, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_search.scss */
 .search-page #gmaps {
   width: 100%; }
 
@@ -9005,3 +9074,28 @@ footer {
   .homepage .register-institution .strat-institution {
     margin-bottom: 30px;
     color: #cecece; }
+
+/* line 3, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_institution.scss */
+.institution-assignCode-page h3 {
+  color: #d74848;
+  margin-top: 50px; }
+
+/* line 12, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_institution.scss */
+.user-institutions .sidebar {
+  border: 1px solid #f4f4f4;
+  padding: 0;
+  list-style: none; }
+  /* line 16, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_institution.scss */
+  .user-institutions .sidebar li {
+    padding: 5px;
+    padding-left: 15px;
+    border-bottom: 1px solid #f4f4f4; }
+    /* line 20, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_institution.scss */
+    .user-institutions .sidebar li a {
+      width: 100%;
+      height: 1.8em;
+      line-height: 1.8em;
+      display: block; }
+      /* line 21, /Users/tdubuffet/Projet/labonnepression/web/bundles/front/sass/_institution.scss */
+      .user-institutions .sidebar li a .fa {
+        width: 25px; }

@@ -1,0 +1,37 @@
+{% extends 'FrontBundle:Layout:skeleton.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}Mes établissements{% endblock %}
+
+
+{% block bodyClass %}user-institutions-list{% endblock %}
+
+{% block container %}
+    <h1 class="location">Mes établissements</h1>
+
+    <ol class="breadcrumb">
+
+        <li><a href="{{ path('homepage') }}">Le comptoir</a></li>
+        <li class="active">Mes établissements</li>
+    </ol>
+
+    <div class="row row-item-card">
+        <div class="col-md-12 search-item-card">
+            <div class="row">
+                {% for institution in institutions %}
+                <div class="col-md-3" id="bar-{{ institution.id }}">
+                    {% include 'FrontBundle:Partials:card-institution.html.twig' with { edit: true, institution: institution}  %}
+                </div>
+
+                {% if (loop.index%2) == 0 %}
+            </div><div class="row">
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

@@ -5,7 +5,7 @@ namespace UserBundle\OauthProvider;
 use Doctrine\ORM\EntityManager;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseFOSUBProvider;
-use UserBundle\Entity\Account;
+use UserBundle\Entity\Account as Account; // A modifier
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class UserProvider extends BaseFOSUBProvider
@@ -111,6 +111,9 @@ class UserProvider extends BaseFOSUBProvider
 
             $user->setEnabled(true);
 
+            if ($response->getProfilePicture()){
+                $user->setAvatarSocialNetwork($response->getProfilePicture());
+            }
 
             $userValue = $this->doctrine->getRepository('UserBundle:Account')->findOneBy(array('username' => $nickName));
 
@@ -140,6 +143,11 @@ class UserProvider extends BaseFOSUBProvider
         $setter = 'set' . ucfirst($serviceName) . 'AccessToken';
         //update access token
         $user->$setter($response->getAccessToken());
+
+        if ($response->getProfilePicture()){
+            $user->setAvatarSocialNetwork($response->getProfilePicture());
+        }
+
         return $user;
     }
 

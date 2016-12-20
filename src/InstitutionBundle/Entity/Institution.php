@@ -4,6 +4,8 @@ namespace InstitutionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use InstitutionBundle\Model\UID;
+use Symfony\Component\Validator\Constraints as Assert;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * Institution
@@ -13,6 +15,9 @@ use InstitutionBundle\Model\UID;
  */
 class Institution
 {
+
+    use ORMBehaviors\Sluggable\Sluggable;
+
     /**
      * @var int
      *
@@ -26,8 +31,34 @@ class Institution
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\Length(
+     *      min = "5",
+     *      max = "200"
+     * )
      */
     private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="little_description", type="string", length=100)
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "100"
+     * )
+     */
+    private $littleDescription;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     * @Assert\Length(
+     *      min = "50",
+     *      max = "1000"
+     * )
+     */
+    private $description;
 
     /**
      * @var string
@@ -35,6 +66,12 @@ class Institution
      * @ORM\Column(name="type", type="string", length=255, nullable=true)
      */
     private $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="institutions")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=true)
+     */
+    private $category;
 
     /**
      * @var string
@@ -56,6 +93,13 @@ class Institution
      * @ORM\Column(name="formatted_international_phone_number", type="string", length=255, nullable=true)
      */
     private $formattedInternationalPhoneNumber;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, unique=false, nullable=true)
+     */
+    private $email;
 
 
     /**
@@ -90,22 +134,42 @@ class Institution
 
 
     /**
- * @var float
- *
- * @ORM\Column(name="website", type="string", length=255, nullable=true)
- */
+     * @var float
+     *
+     * @ORM\Column(name="website", type="string", length=255, nullable=true)
+     */
     private $website;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="secret_code", type="string", length=8, nullable=false)
+     * @ORM\Column(name="secret_code", type="string", length=8, nullable=false, unique=true)
      */
     private $secretCode = null;
 
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="manager_name", type="string", length=100, nullable=true)
+     * @Assert\Length(
+     *      min = "5",
+     *      max = "100"
+     * )
+     */
+    private $managerName = null;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Account", inversedBy="institutions")
+     * @ORM\JoinColumn(name="account_id", referencedColumnName="id")
+     */
+    private $account = null;
 
 
+    public function getSluggableFields()
+    {
+        return [ 'name', 'postalCode', 'city' ];
+    }
 
     /** -----------
      * Google DATA
@@ -162,6 +226,10 @@ class Institution
      */
     private $googleAddressComponents;
 
+    /**
+     * @ORM\Column(type="datetime", name="imported_at")
+     */
+    private $importedAt;
 
     public function __construct()
     {
@@ -170,6 +238,10 @@ class Institution
             $code = new UID();
 
             $this->secretCode = $code->limit(8);
+        }
+
+        if($this->importedAt == null) {
+            $this->importedAt = new \DateTime;
         }
 
     }
@@ -499,7 +571,7 @@ class Institution
     }
 
     /**
-     * @return float
+     * @return string
      */
     public function getSecretCode()
     {
@@ -507,16 +579,141 @@ class Institution
     }
 
     /**
-     * @param float $secretCode
+     * @param string $secretCode
      */
-    public function setSecretCode()
+    public function setSecretCode($secretCode = null)
     {
-        $code = new UID();
+        if ($secretCode == null) {
+            if ($this->secretCode == null) {
+                $code = new UID();
+                $this->secretCode = $code->limit(8);
+            }
+        } else {
+            $this->secretCode = $secretCode;
+        }
+    }
 
-        $this->secretCode = $code->limit(8);
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getManagerName()
+    {
+        return $this->managerName;
+    }
+
+    /**
+     * @param string $managerName
+     */
+    public function setManagerName($managerName)
+    {
+        $this->managerName = $managerName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAccount()
+    {
+        return $this->account;
+    }
+
+    /**
+     * @param mixed $account
+     */
+    public function setAccount($account)
+    {
+        $this->account = $account;
     }
 
 
+    public function getSlug()
+    {
+        return $this->slug;
+    }
 
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImportedAt()
+    {
+        return $this->importedAt;
+    }
+
+    /**
+     * @param mixed $importedAt
+     */
+    public function setImportedAt($importedAt)
+    {
+        $this->importedAt = $importedAt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLittleDescription()
+    {
+        return $this->littleDescription;
+    }
+
+    /**
+     * @param string $littleDescription
+     */
+    public function setLittleDescription($littleDescription)
+    {
+        $this->littleDescription = $littleDescription;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param mixed $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
 }
 

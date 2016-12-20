@@ -1,0 +1,13 @@
+<div class="card">
+    <img class="card-img-top" src="https://mdemontalivet.files.wordpress.com/2008/05/barhemingwayritz.jpg" alt="Card image cap">
+    <div class="card-block">
+        <h4 class="card-title">{{ institution.name }}</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+        {% if edit is defined %}
+            <a href="{{ path('account_institution_edit', { slug: institution.slug }) }}" class="btn btn-primary btn-block btn-sm">Editer</a>
+        {% else %}
+            <a href="#" class="btn btn-primary">J'ai soif</a>
+        {% endif %}
+    </div>
+</div>

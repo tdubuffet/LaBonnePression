@@ -31,6 +31,11 @@ google_connect:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
+institution:
+    resource: "@InstitutionBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 user:
     resource: "@UserBundle/Controller/"
     type:     annotation

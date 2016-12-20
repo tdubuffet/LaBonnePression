@@ -21,19 +21,21 @@ class RefreshInstitutionCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         
-        $repository = $this->getContainer()->get('doctrine')->getRepository('InstitutionBundle:Institution');
+        $repository = $this
+            ->getContainer()
+            ->get('doctrine')
+            ->getRepository('InstitutionBundle:Institution');
         
-        $institutions = $repository->findAll();
-
+        $institutions = $repository->findBy(array('slug' => null), [], 1000, 0);
         foreach ($institutions as $institution) {
+            $institution->setLittleDescription('Aucun description pour cet établissement');
+            var_dump($institution->getSlug());
 
-            $institution->setSecretCode();
-
+            $this->getContainer()->get('doctrine')->getManager()->persist($institution);
         }
 
 
         $this->getContainer()->get('doctrine')->getManager()->flush();
-
         $this->getContainer()->get('doctrine')->resetManager();
     }
 

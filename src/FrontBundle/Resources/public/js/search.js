@@ -29,7 +29,7 @@ var Search = {
             lat: lat,
             lng: lng,
             title: name,
-            icon: path + 'bundles/front/images/location-pin.png',
+            icon: path + '/bundles/front/images/location-pin.png',
             click: function(e) {
 
                 //get the top offset of the target anchor

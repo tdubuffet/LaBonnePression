@@ -32,6 +32,7 @@ class AppKernel extends Kernel
             new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new \HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+            new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
 
 
             new FrontBundle\FrontBundle(),

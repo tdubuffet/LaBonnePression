@@ -1,0 +1,72 @@
+{% extends 'FrontBundle:Layout:skeleton.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}Mon profil{% endblock %}
+
+
+{% block bodyClass %}account-edit-page{% endblock %}
+
+{% block container %}
+    <div class="row row-header">
+        <div class="col-md-4">
+            <ol class="breadcrumb">
+
+                <li><a href="{{ path('homepage') }}">Le comptoir</a></li>
+                <li class="active">Mon profil</li>
+            </ol>
+        </div>
+        <div class="col-md-4">
+            <h2 class="text-xs-center">
+                Mon profil
+            </h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+
+            <h4>Editer mon profil</h4>
+
+            {{ form_start(account) }}
+
+                {{ form_rest(account) }}
+
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <button class="btn btn-primary btn-block btn-sm" type="submit">
+                            Valider les modifications
+                        </button>
+                    </div>
+                </div>
+
+            {{ form_end(account) }}
+
+
+            <h4>Changer mon mot de passe</h4>
+
+            {{ form_start(password) }}
+
+            {{ form_rest(password) }}
+
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <button class="btn btn-primary btn-block btn-sm" type="submit">
+                        Valider mon mot de passe
+                    </button>
+                </div>
+            </div>
+
+            {{ form_end(password) }}
+
+        </div>
+
+        <div class="col-md-4">
+
+            <h4 class="text-xs-right">Modifier mon avatar</h4>
+
+        </div>
+    </div>
+
+
+{% endblock %}

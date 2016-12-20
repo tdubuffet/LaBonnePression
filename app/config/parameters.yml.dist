@@ -19,3 +19,9 @@ parameters:
     secret:            LdDOO48sDgh498-4598425DleTF
     google_api:
         search_nav:  AIzaSyCHH_voJKmwP8ZxxNMjHilkTNaHr3pYvR8
+    oauth.facebook.id: '1041076362613846'
+    oauth.facebook.secret: 8ff44f49862c9e9c18a2014c5baadc3e
+    oauth.twitter.id: 'Z9GnaZPV4hOLfBeu2qDAtGZzh'
+    oauth.twitter.secret:   OlcMaT8mSTeSrz6xHPnPVriR1DWEcGVgUs9iIsPan7lIUtAW9I
+    oauth.google.id: '834109579855-u51u9urbo1ke2614cqv6i17en0hl091f.apps.googleusercontent.com'
+    oauth.google.secret: ZFBpp4jqwFTdDvymVgMGGQQw

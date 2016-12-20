@@ -63,6 +63,21 @@ class Account extends BaseUser
      */
     protected $lastname;
 
+
+    /** @ORM\Column(name="avatar_social_network", type="string", length=255, nullable=true) */
+    protected $avatarSocialNetwork;
+
+    /** @ORM\Column(name="gravatar", type="string", length=255, nullable=true) */
+    protected $gravatar;
+
+    /** @ORM\Column(name="avatar", type="string", length=255, nullable=true) */
+    protected $avatar;
+
+    /**
+     * @ORM\OneToMany(targetEntity="InstitutionBundle\Entity\Institution", mappedBy="account")
+     */
+    private $institutions;
+
     /**
      * @return mixed
      */
@@ -189,5 +204,83 @@ class Account extends BaseUser
     public function setLastname($lastname)
     {
         $this->lastname = $lastname;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAvatar()
+    {
+
+
+        if ($this->avatar) {
+            return $this->avatar;
+        }
+
+        if ($this->avatarSocialNetwork) {
+            return $this->avatarSocialNetwork;
+        }
+
+        if ($this->gravatar) {
+            return $this->gravatar;
+        }
+
+        return null;
+    }
+
+    /**
+     * @param mixed $avatar
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAvatarSocialNetwork()
+    {
+        return $this->avatarSocialNetwork;
+    }
+
+    /**
+     * @param mixed $avatarSocialNetwork
+     */
+    public function setAvatarSocialNetwork($avatarSocialNetwork)
+    {
+        $this->avatarSocialNetwork = $avatarSocialNetwork;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGravatar()
+    {
+        return $this->gravatar;
+    }
+
+    /**
+     * @param mixed $gravatar
+     */
+    public function setGravatar($gravatar)
+    {
+        $this->gravatar = $gravatar;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInstitutions()
+    {
+        return $this->institutions;
+    }
+
+    /**
+     * @param mixed $institutions
+     */
+    public function setInstitutions($institutions)
+    {
+        $this->institutions = $institutions;
     }
 }
